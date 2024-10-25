@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* .form{
+  background-image: url("./assets/rm301-eye-10-c.jpg");
+  background-size: cover;
+} */
+.container {
+  background-image:radial-gradient(circle, rgba(0, 115, 255, 0.2), rgba(81, 0, 255, 0.2));
+  --gap: 3em;
+  --line: 1px;
+  --color: rgba(255, 255, 255, 0.2);
+  
+  background-image: linear-gradient(
+      -90deg,
+      transparent calc(var(--gap) - var(--line)),
+      var(--color) calc(var(--gap) - var(--line) + 1px),
+      var(--color) var(--gap)
+    ),
+    linear-gradient(
+      0deg,
+      transparent calc(var(--gap) - var(--line)),
+      var(--color) calc(var(--gap) - var(--line) + 1px),
+      var(--color) var(--gap)
+    );
+  background-size: var(--gap) var(--gap);
+}
+
+input{
+  margin-bottom: 10px;
+}
