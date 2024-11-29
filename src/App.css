@@ -26,7 +26,3 @@
     );
   background-size: var(--gap) var(--gap);
 }
-
-input{
-  margin-bottom: 10px;
-}
