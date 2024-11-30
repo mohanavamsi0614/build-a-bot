@@ -4,7 +4,7 @@ import "./App.css";
 function Home() {
     const nav=useNavigate()
   return (
-    <div className="home h-full w-full bg-black text-white">
+    <div className="home h-full w-screen bg-black text-white">
       <div className="h-screen w-full flex flex-col justify-center items-center">
         <p className="text-3xl font-bold">
           <span className="text-[#E16254]">Coding</span> Blocks Presents
@@ -51,7 +51,6 @@ function Home() {
           </div>
         </div>
 
-        {/* Registration Button */}
         <div>
           <button className="bg-white text-black p-3 rounded-full mt-5" onClick={()=>{nav("/registration")}}>
             Register Now!
@@ -59,28 +58,25 @@ function Home() {
         </div>
       </div>
 
-      {/* Additional Sections */}
-      <div className="w-full h-full flex flex-col justify-center items-center p-5">
-        {/* About Section */}
+      <div className="w-full h-full flex flex-col justify-center items-center p-10 pt-2">
         <div className=" max-w-md flex flex-col justify-center items-center mb-10">
           <h1 className="text-3xl font-bold">What</h1>
           <h2 className="text-2xl mt-2">Is Build A Bot</h2>
-          <p className="text-center mt-3">
+          <p className=" m-3 ">
             This intensive, high-energy competition challenges teams of
             participants to design, develop, and deploy innovative bots within a
             24-hour timeframe.
           </p>
         </div>
 
-        {/* Why to Join Section */}
         <div className=" w-96 flex flex-col justify-center items-center mb-10">
           <h1 className="text-3xl font-bold">Why</h1>
           <h2 className="text-2xl mt-2">Should You Join?</h2>
-          <p className="text-center mt-3">
+          <p className=" text-left m-3">
             By participating in <b className="text-[#E16254]">Build-a-Bot</b>,
             you’ll:
           </p>
-          <ul className="list-disc mt-3 ml-6 text-left">
+          <ul className="list-disc m-3 text-left">
             <li>Enhance your problem-solving and technical skills.</li>
             <li>Network with like-minded peers and industry professionals.</li>
             <li>Showcase your creativity and innovation in robotics.</li>
@@ -89,12 +85,11 @@ function Home() {
           </ul>
         </div>
 
-        {/* Organizers Section */}
         <div className="w-96 flex flex-col justify-center items-center mb-10">
           <h1 className="text-3xl font-bold">Who</h1>
           <h2 className="text-2xl mt-2">Are We</h2>
-          <p className="text-center mt-3">
-            The Coding Blocks KARE Student Chapter, proudly affiliated with
+          <p className="text-left m-3 ml-6">
+            <b className=" text-[#E16254]">The Coding Blocks KARE Student Chapter</b>, proudly affiliated with
             Coding Blocks, is a vibrant community of tech enthusiasts and future
             innovators at Kalasalingam Academy of Research and Education. We
             organize workshops, coding competitions, hackathons, and other
@@ -102,11 +97,10 @@ function Home() {
           </p>
         </div>
 
-        {/* Registration Process Section */}
         <div className=" w-96 flex flex-col justify-center items-center mb-10">
           <h1 className="text-3xl font-bold">Process</h1>
           <h2 className="text-2xl mt-2">Of Registration</h2>
-          <p className="text-center mt-3">
+          <p className="text-left m-3 ml-6">
             The <b className="text-[#E16254]">Build-a-Bot Hackathon</b> is open
             to all engineering students, regardless of their year or branch.
             Each team must consist of a{" "}
@@ -118,9 +112,8 @@ function Home() {
         <div className=" w-96 flex flex-col justify-center items-center mb-10">
         <h1 className="text-3xl font-bold">Where</h1>
           <h2 className="text-2xl mt-2">Is this happening</h2>
-          <p className=" text-center mt-3">
-          Build A bot is happening in the prestigious Kalasalingam University in Krishnankoil, Tamil Nadu.
-
+          <p className=" text-left m-3 ml-6">
+          Build A bot is happening in the prestigious <b className=" text-[#E16254]">Kalasalingam University</b> in Krishnankoil, Tamil Nadu.
           </p>
         </div>
         <div className="prizes-section p-5 text-center  ">
@@ -152,9 +145,9 @@ function Home() {
   </div>
 </div>
 <div className=" w-96 flex flex-col justify-center items-center mb-10">
-<h1 className="text-3xl font-bold">Register Now !</h1>
-<p>Ready for the big event? Make sure to fill the details carefully and pay the registration fee to complete the registration process. Once you have registered, you will receive a confirmation email with further instructions. We can't wait to see your project!
-NOTE: Please ensure the filled details are correct as they will be used for further communication. The details will also be verified at the time of the offline presentation. Use your college email address if available.
+<h1 className="text-3xl font-bold m-5">Register Now !</h1>
+<p className=" m-5 ml-6">Ready for the big event? Make sure to fill the details carefully and pay the registration fee to complete the registration process. Once you have registered, you will receive a confirmation email with further instructions. We can't wait to see your project!
+</p><p className=" m5-5 ml-6"><b className=" text-[#E16254]"> NOTE:</b> Please ensure the filled details are correct as they will be used for further communication. The details will also be verified at the time of the offline presentation. Use your college email address if available.
 </p>
             <div>
           <button className="bg-white text-black p-3 rounded-full mt-5" onClick={()=>{nav("/registration")}}>

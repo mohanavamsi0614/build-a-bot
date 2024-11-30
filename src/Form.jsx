@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router';
 
 const Form = () => {
@@ -40,6 +40,9 @@ const Form = () => {
 
     return null; 
   };
+  useEffect(()=>{
+    window.scrollTo(0,0)
+  },[])
 
   const handleSubmit = () => {
     const error = validateForm();
