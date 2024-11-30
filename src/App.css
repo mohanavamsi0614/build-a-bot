@@ -6,6 +6,22 @@
   background-image: url("./assets/rm301-eye-10-c.jpg");
   background-size: cover;
 } */
+ .home{
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed; /* Keeps the background fixed */
+  background-position: center;
+  height: 100%;
+  width: 100%;
+  background-image: url("../public/vecteezy_digital-blue-background-with-dots-and-lines-big-data_26234742.gif") ;
+ }
+ /* body{ */
+ 
+    /* background-position:0%;
+background-size: cover;
+background-repeat: no-repeat;
+background-image: url("./public/vecteezy_digital-blue-background-with-dots-and-lines-big-data_26234742.gif") ;
+ } */
 .container {
   background-image:radial-gradient(circle, rgba(0, 115, 255, 0.2), rgba(81, 0, 255, 0.2));
   --gap: 3em;

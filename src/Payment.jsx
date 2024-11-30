@@ -4,8 +4,16 @@ import { Link, useLocation } from "react-router-dom";
 function Payment() {
     const [upi,setupi]=useState("")
     const [txn,settxn]=useState("")
+    const [url,seturl]=useState("")
     const data=useLocation().state
     console.log(data)
+    function handleSubmit(){
+        if(upi && txn && url){
+            const finaldata={...data,upi,txn,url}
+            console.log(finaldata)
+            alert("done")
+        }
+    }
     const handlePayment = () => {
         const upiId = "mohanavamsi14@okhdfcbank";
         const amount = "1000";
@@ -17,24 +25,24 @@ function Payment() {
       };
     return(   
         <div className="flex-col items-center overflow-visible p-6 justify-center  h-full flex w-full bg-[#090D0A]">
-              <div className=' relative right-28'>
+              <div className=' w-full justify-items-start'>
       <Link to="/registration"><button className="w-40 font-semibold bg-white rounded-full h-11 m-3 border text-black ">&#8592; Back</button></Link></div>
 
     <div className="w-full max-w-md space-y-4 container p-6 border rounded">
           <h3 className="text-xl text-white">Payment</h3>
-          <p className=' text-white'> <b>Info:</b> Please scan the QR code below to make a payment for: 
+          <p className=' text-white'> <b>Info:</b> Please scan the QR code below to make a payment or click on the pay button for: 
           {<p>{data.lead.name} x 200</p>}
             {
             data.members.map((i)=>(
                 <p className=" m-1"><b>{i.name}</b> x 200</p>
             ))
             }
-            Total of <b>1000 </b>
+        Total of <b className=" text-[#E16254] text-xl">₹1000 </b>
           
-          using any UPI app. And also provide your upi Id and Transaction Number for our refrence</p>
+          using any UPI app. And also provide your upi Id and Transaction Number for our refrence.</p>
           <div className="w-full flex  flex-col justify-center p-4 bg-white bg-opacity-20 backdrop-blur rounded-lg shadow-md">
             <img src="path/to/qr-code-placeholder.png" alt="QR Code for Payment" className="w-32 h-32 object-contain" />
-          <div onClick={handlePayment} className=' w-20 bg-green-700 h-3 text-white border p-5 flex justify-center items-center cursor-pointer '>Pay</div>
+          <div onClick={handlePayment} className=' w-20  bg-[#E16254] h-3 text-white border p-5 flex justify-center items-center cursor-pointer '>Pay</div>
           </div>
         <label htmlFor="upi" className="text-white">Your Upi id:</label>
           <input
@@ -62,8 +70,12 @@ function Payment() {
             className="w-full p-3 text-white bg-white bg-opacity-10 rounded-lg border-none focus:ring-2 focus:ring-blue-400"
           />
         </div>
-        <button>Submit</button>
-        </div>
+        <button
+          onClick={handleSubmit}
+          className="w-40 font-semibold bg-white rounded-full h-14 m-3 border text-black"
+        >
+          Submit
+        </button>        </div>
         )
 }
 export default  Payment

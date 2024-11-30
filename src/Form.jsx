@@ -61,7 +61,7 @@ const Form = () => {
   };
 
   return (
-    <div className="flex-col items-center overflow-visible  p-6  justify-center h-full flex w-full bg-[#090D0A]">
+    <div className="flex-col items-center overflow-visible  p-6  justify-center h-full  flex w-full bg-[#090D0A]">
       <div className="border rounded-lg h-full p-6 flex flex-col items-center max-w-md  space-y-6 w-full container">
         <div className="relative p-3 w-[95%]">
           <div className="size-12 animate-bounce rounded-full bg-[#E16254] absolute top-2 left-1 p-4"></div>
