@@ -65,7 +65,7 @@ const Form = () => {
 
   return (
     <div className="flex-col items-center overflow-visible  p-6  justify-center h-full  flex w-full bg-[#090D0A]">
-      <div className="border rounded-lg h-full p-6 flex flex-col items-center max-w-md  space-y-6 w-full container">
+      <div className="border rounded-lg h-full p-6 flex flex-col items-center  max-w-lg  space-y-6 w-full container">
         <div className="relative p-3 w-[95%]">
           <div className="size-12 animate-bounce rounded-full bg-[#E16254] absolute top-2 left-1 p-4"></div>
           <div className="size-12 animate-bounce rounded-full bg-[#919294] absolute bottom-1 right-1"></div>
@@ -76,7 +76,7 @@ const Form = () => {
         </div>
 
         <div className="w-full">
-          <label htmlFor="teamName" className="text-white">Team Name:</label>
+          <label htmlFor="teamName" className="text-white">Team Name:  <span className=' text-red-700'>*</span></label>
           <input
             type="text"
             id="teamName"
@@ -85,7 +85,7 @@ const Form = () => {
             placeholder="Enter team name..."
             className="w-full p-3 mb-2 mt-1 text-white shadow-inner bg-white bg-opacity-10 backdrop-blur-md rounded-lg border-none focus:ring-2 focus:ring-blue-400"
           />
-          <label htmlFor="leadName" className="text-white">Team Lead Name:</label>
+          <label htmlFor="leadName" className="text-white">Team Lead Name:  <span className=' text-red-700'>*</span></label>
           <input
             type="text"
             id="leadName"
@@ -94,7 +94,7 @@ const Form = () => {
             placeholder="Enter team lead name..."
             className="w-full p-3 mb-2 mt-1 text-white shadow-inner bg-white bg-opacity-10 backdrop-blur-md rounded-lg border-none focus:ring-2 focus:ring-blue-400"
           />
-          <label htmlFor="leadRegNumber" className="text-white mt-3">Registration Number:</label>
+          <label htmlFor="leadRegNumber" className="text-white mt-3">Registration Number:  <span className=' text-red-700'>*</span></label>
           <input
             type="text"
             id="leadRegNumber"
@@ -103,7 +103,7 @@ const Form = () => {
             placeholder="Enter registration number..."
             className="w-full p-3 mb-2 mt-1 text-white shadow-inner bg-white bg-opacity-10 backdrop-blur-md rounded-lg border-none focus:ring-2 focus:ring-blue-400"
           />
-          <label htmlFor="leadEmail" className="text-white mt-3">Email:</label>
+          <label htmlFor="leadEmail" className="text-white mt-3">Email:  <span className=' text-red-700'>*</span></label>
           <input
             type="email"
             id="leadEmail"
@@ -115,18 +115,11 @@ const Form = () => {
         </div>
 
         <div className="w-full">
-          <button
-            type="button"
-            onClick={toggleMembers}
-            className="w-full text-white p-3 bg-[#919294] bg-opacity-30 rounded-lg hover:bg-opacity-40 mt-3"
-          >
-            {showMembers ? 'Hide' : 'Show'} Team Members Details
-          </button>
-          {showMembers && (
+
             <div className="mt-4 space-y-4">
               {members.map((member, index) => (
                 <div key={index}>
-                  <label className="text-white">Member {index + 1} Name:</label>
+                  <label className="text-white">Member {index + 1} Name:  <span className=' text-red-700'>*</span></label>
                   <input
                     type="text"
                     value={member.name}
@@ -134,7 +127,7 @@ const Form = () => {
                     placeholder={`Enter member ${index + 1} name...`}
                     className="w-full mt-1 mb-2  p-3  text-white shadow-inner bg-white bg-opacity-10 backdrop-blur-md rounded-lg border-none focus:ring-2 focus:ring-blue-400"
                   />
-                  <label className="text-white">Member {index + 1} Registration Number:</label>
+                  <label className="text-white">Member {index + 1} Registration Number: <span className=' text-red-700'>*</span></label>
                   <input
                     type="text"
                     value={member.regNumber}
@@ -142,7 +135,7 @@ const Form = () => {
                     placeholder={`Enter member ${index + 1} registration number...`}
                     className="w-full mt-1 mb-2 p-3  text-white shadow-inner bg-white bg-opacity-10 backdrop-blur-md rounded-lg border-none focus:ring-2 focus:ring-blue-400"
                   />
-                  <label className="text-white">Member {index + 1} Type:</label>
+                  <label className="text-white">Member {index + 1} Type:  <span className=' text-red-700'>*</span></label>
                   <select
                     value={member.type}
                     onChange={(e) => handleMemberChange(index, 'type', e.target.value)}
@@ -164,7 +157,6 @@ const Form = () => {
                 </div>
               ))}
             </div>
-          )}
         </div>
       </div>
       <div className="w-full flex justify-end m-3 items-center h-auto">

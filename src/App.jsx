@@ -3,6 +3,7 @@ import { Route, Routes } from 'react-router'
 import Home from './Home'
 import Form from './Form'
 import Payment from './Payment'
+import Admin from './Admin'
 function App() {
 
   return (
@@ -11,6 +12,7 @@ function App() {
         <Route path='/' element={<Home/>}/>
         <Route path='/registration' element={<Form/>}/>
         <Route path='/payment' element={<Payment/>}/>
+        <Route path='/admin' element={<Admin/>}/>
       </Routes>
     </div>
   )

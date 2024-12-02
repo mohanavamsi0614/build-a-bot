@@ -1,13 +1,18 @@
 import { useNavigate } from "react-router";
 import "./App.css";
-
+import kalasalingam from "/public/kalasalingam.png";
+import cb from "/public/cb.png"
 function Home() {
     const nav=useNavigate()
   return (
     <div className="home h-full w-screen bg-black text-white">
       <div className="h-screen w-full flex flex-col justify-center items-center">
+      <div className=" w-full flex justify-center items-center">
+        <img src={kalasalingam} className=" size-20"/>
+        <img src={cb} className="  size-32 relative top-3"/>
+      </div>
         <p className="text-3xl font-bold">
-          <span className="text-[#E16254]">Coding</span> Blocks Presents
+          <span className="text-[#E16254]">Coding Blocks Kare</span> Presents
         </p>
         <h1 className="text-5xl mt-2">Build a Bot</h1>
         <p className="text-xl mt-2">An Amazing Hackathon</p>
