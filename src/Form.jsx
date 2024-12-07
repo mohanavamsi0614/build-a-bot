@@ -6,6 +6,7 @@ const Form = () => {
   const [leadName, setLeadName] = useState('');
   const [leadRegNumber, setLeadRegNumber] = useState('');
   const [leadEmail, setLeadEmail] = useState('');
+  const [leadType,setLeadType]=useState('')
 
   const [members, setMembers] = useState([
     { name: '', regNumber: '', type: '' },
@@ -13,18 +14,12 @@ const Form = () => {
     { name: '', regNumber: '', type: '' },
     { name: '', regNumber: '', type: '' },
   ]);
-
-  const [showMembers, setShowMembers] = useState(false);
-
-  const toggleMembers = () => setShowMembers(!showMembers);
-
   const handleMemberChange = (index, field, value) => {
     const updatedMembers = [...members];
     updatedMembers[index][field] = value;
     setMembers(updatedMembers);
   };
   const nav=useNavigate()
-
   const validateForm = () => {
     if (!teamName.trim()) return "Team Name is required.";
     if (!leadName.trim()) return "Team Lead Name is required.";
@@ -112,6 +107,25 @@ const Form = () => {
             placeholder="Enter email address..."
             className="w-full p-3 mb-2 mt-1 text-white shadow-inner bg-white bg-opacity-10 backdrop-blur-md rounded-lg border-none focus:ring-2 focus:ring-blue-400"
           />
+                            <label className="text-white">Type:  <span className=' text-red-700'>*</span></label>
+                  <select
+                    value={leadType}
+                    onChange={(e) => setLeadType(e.target.value)}
+                    className="w-full mt-1 mb-2 p-3 scroll-m-1  text-white shadow-inner bg-white bg-opacity-10 backdrop-blur-md rounded-lg border-none focus:ring-2 focus:ring-blue-400"
+                  >
+                    <option className=' bg-black text-white' value="">Select Type</option>
+                    <option className=' bg-black text-white' value="Day's Scholar">Day's Scholar</option>
+                    <option className=' bg-black text-white' value="Mh-1">Mh-1</option>
+                    <option className=' bg-black text-white' value="Mh-2">Mh-2</option>
+                    <option className=' bg-black text-white' value="Mh-3">Mh-3</option>
+                    <option className=' bg-black text-white' value="Mh-4">Mh-4</option>
+                    <option className=' bg-black text-white' value="Mh-5">Mh-5</option>
+                    <option className=' bg-black text-white' value="Mh-6">Mh-6</option>
+                    <option className=' bg-black text-white' value="Mh-7">Mh-7</option>
+                    <option className=' bg-black text-white' value="Lh-1">Lh-1</option>
+                    <option className=' bg-black text-white' value="Lh-2">Lh-2</option>
+                    <option className=' bg-black text-white' value="Lh-3">Lh-3</option>
+                  </select>
         </div>
 
         <div className="w-full">

@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import api from "./api";
 import Modal from "./Model";
-import done from "/public/1cbd3594bb5e8d90924a105d4aae924c.gif"
+import done from "/1cbd3594bb5e8d90924a105d4aae924c.gif"
 
 function Payment() {
   const [upiId, setupi] = useState("");
@@ -25,7 +25,7 @@ function Payment() {
         upload_preset: "vh0llv8b",
       });
       console.log("File uploaded successfully:", response.data);
-      seturl(response.data.secure_url);
+      return response.data.secure_url
     } catch (error) {
       console.error("Error uploading photo:", error);
     }
@@ -44,8 +44,8 @@ function Payment() {
     console.log(data, upiId, transtationId, imgUrl);
 
     if (upiId !== "" && transtationId !== "" && e !== "") {
-      await url(e);
-      const finaldata = { ...data, upiId, transtationId, imgUrl };
+      const imgurl=await url(e);
+      const finaldata = { ...data, upiId, transtationId, imgUrl:imgurl };
       console.log(finaldata);
 
       try {

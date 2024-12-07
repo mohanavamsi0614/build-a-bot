@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router";
 import "./App.css";
-import kalasalingam from "/public/kalasalingam.png";
-import cb from "/public/cb.png"
+import kalasalingam from "/kalasalingam.png";
+import cb from "/cb.png"
 function Home() {
     const nav=useNavigate()
   return (
