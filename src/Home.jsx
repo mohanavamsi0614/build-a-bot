@@ -12,12 +12,12 @@ function Home() {
         <img src={cb} className="  size-32 relative top-3"/>
       </div>
         <p className="text-3xl font-bold">
-          <span className="text-[#E16254]">Coding Blocks Kare</span> Presents
+          <span className="text-[#E16254] text-center">Coding Blocks Kare</span> Presents
         </p>
         <h1 className="text-5xl mt-2">Build a Bot</h1>
         <p className="text-xl mt-2">An Amazing Hackathon</p>
 
-        <div className="mt-4">
+        <div className="mt-4 text-center flex justify-center items-center flex-col">
           <div className="flex justify-evenly items-center mb-2">
             <div className="icon" aria-label="Event Time">
               <svg
@@ -33,7 +33,7 @@ function Home() {
                 <path d="M12 1c6.075 0 11 4.925 11 11s-4.925 11-11 11S1 18.075 1 12 5.925 1 12 1ZM2.5 12a9.5 9.5 0 0 0 9.5 9.5 9.5 9.5 0 0 0 9.5-9.5A9.5 9.5 0 0 0 12 2.5 9.5 9.5 0 0 0 2.5 12Z"></path>
               </svg>
             </div>
-            <div className="text-2xl ml-1">Date & Time: [To Be Announced]</div>
+            <div className="text-2xl ml-1">Date & Time: To Be Announced</div>
           </div>
           <div className="flex justify-evenly items-center">
             <div className="icon" aria-label="Event Location">
