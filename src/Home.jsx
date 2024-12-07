@@ -11,11 +11,11 @@ function Home() {
         <img src={kalasalingam} className=" size-20"/>
         <img src={cb} className="  size-32 relative top-3"/>
       </div>
-        <p className="text-3xl font-bold">
-          <span className="text-[#E16254] text-center">Coding Blocks Kare</span> Presents
+        <p className="text-3xl font-bold text-center">
+          <span className="text-[#E16254] ">Coding Blocks Kare</span> Presents
         </p>
         <h1 className="text-5xl mt-2">Build a Bot</h1>
-        <p className="text-xl mt-2">An Amazing Hackathon</p>
+        <p className="text-xl mt-2">A 24-Hours hackathon</p>
 
         <div className="mt-4 text-center flex justify-center items-center flex-col">
           <div className="flex justify-evenly items-center mb-2">
