@@ -51,6 +51,7 @@ const Form = () => {
         name: leadName,
         regNumber: leadRegNumber,
         email: leadEmail,
+        type:leadType
       },
       members,
     };
