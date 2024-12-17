@@ -127,19 +127,19 @@ function Home() {
     {/* Prize 1 */}
     <div className="prize-card border  text-white rounded-lg p-5 shadow-lg">
       <h2 className="text-xl font-semibold">Grand Prize</h2>
-      <p className="mt-2">₹10,000</p>
+      <p className="mt-2">₹7,000</p>
     </div>
 
     {/* Prize 2 */}
     <div className="prize-card border  text-white rounded-lg p-5 shadow-lg">
       <h2 className="text-xl font-semibold">Second Prize</h2>
-      <p className="mt-2">₹7,000</p>
+      <p className="mt-2">₹5,000</p>
     </div>
 
     {/* Prize 3 */}
     <div className="prize-card border  text-white rounded-lg p-5 shadow-lg">
       <h2 className="text-xl font-semibold">Third Prize</h2>
-      <p className="mt-2">₹5,000</p>
+      <p className="mt-2">₹3,000</p>
     </div>
 
     {/* Swags */}
