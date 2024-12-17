@@ -124,25 +124,21 @@ function Home() {
         <div className="prizes-section p-5 text-center  ">
   <h1 className="text-3xl font-bold mb-5">Prizes</h1>
   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-    {/* Prize 1 */}
     <div className="prize-card border  text-white rounded-lg p-5 shadow-lg">
       <h2 className="text-xl font-semibold">Grand Prize</h2>
       <p className="mt-2">₹7,000</p>
     </div>
 
-    {/* Prize 2 */}
     <div className="prize-card border  text-white rounded-lg p-5 shadow-lg">
       <h2 className="text-xl font-semibold">Second Prize</h2>
       <p className="mt-2">₹5,000</p>
     </div>
 
-    {/* Prize 3 */}
     <div className="prize-card border  text-white rounded-lg p-5 shadow-lg">
       <h2 className="text-xl font-semibold">Third Prize</h2>
       <p className="mt-2">₹3,000</p>
     </div>
 
-    {/* Swags */}
     <div className="prize-card border  text-white rounded-lg p-5 shadow-lg">
       <h2 className="text-xl font-semibold">Exclusive Swags</h2>
       <p className="mt-2">Goodies from Coding Blocks</p>
