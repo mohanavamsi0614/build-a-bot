@@ -71,7 +71,7 @@ function Payment() {
   const handlePayment = () => {
     const upiId = "deepakbussa-1@oksbi";
     const amount = "1000";
-    const name = "Deepak Bussa";
+    const name = "Coding Blocks";
 
     const upiUrl = `upi://pay?pa=${upiId}&pn=${name}&am=${amount}&cu=INR`;
     window.location.href = upiUrl;

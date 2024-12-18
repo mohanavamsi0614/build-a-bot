@@ -7,13 +7,15 @@ function Admin() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [verified, setVerified] = useState(new Set()); 
+  const [count,setcount]=useState(0)
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get(`${api}/event/students`);
         setData(response.data);
+        setcount(response.data.length)
+        console.log(response.data.length)
       } catch (err) {
         console.error("Error fetching data:", err);
         setError("Failed to fetch student data.");
@@ -25,18 +27,7 @@ function Admin() {
     fetchData();
   }, []);
 
-  async function send(id) {
-    try {
-      const response = await axios.get(`${api}/event/team/${id}`);
-      console.log(response.data);
 
-      setVerified((prev) => new Set(prev).add(id));
-      alert("Verified successfully!");
-    } catch (err) {
-      console.error("Error verifying:", err);
-      alert("Failed to verify the team.");
-    }
-  }
 
   if (loading) {
     return (
@@ -59,15 +50,18 @@ function Admin() {
       <h1 className="text-white text-3xl font-bold text-center mb-6">
         Admin Dashboard
       </h1>
+      <h1 className="text-white text-3xl font-bold text-center mb-6">
+        Team Count: {count}
+      </h1>
       <div className="space-y-4">
         {data && data.length > 0 ? (
           data.map((team, index) => (
             <details
               key={index}
-              className="bg-gray-800 rounded-lg p-4 shadow-lg text-white"
+              className={`${team.verified ? "bg-[#E16256]" : "bg-gray-800 "} rounded-lg p-4 shadow-lg text-white`}
             >
               <summary className="cursor-pointer text-lg font-semibold">
-                {team.teamName}
+                {team.verified ? team.teamName + "(Verified)" : team.teamName}
               </summary>
               <PaymentCard team={team}/>
               {/* <div className="mt-4 space-y-2">

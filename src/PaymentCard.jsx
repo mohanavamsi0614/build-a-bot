@@ -9,7 +9,10 @@ function PaymentCard({ team }) {
   const [verified, setVerified] = useState(team.verified);
 
   async function handleVerify(id) {
+    const passcode=prompt("Enter the password:")
+        if(passcode=="cbkare2024"){
     try {
+
       setLoading(true);
       const response = await axios.get(`${api}/event/team/${id}`);
       console.log(response.data);
@@ -19,6 +22,9 @@ function PaymentCard({ team }) {
       alert("Failed to verify the team.");
     } finally {
       setLoading(false);
+    }}
+    else{
+        alert("Wrong password")
     }
   }
 
@@ -112,7 +118,7 @@ function PaymentCard({ team }) {
       </div>
 
       {photo && (
-        <div className="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-75 z-50">
+        <div className="fixed inset-0 overflow-visible flex items-center justify-center bg-gray-900 bg-opacity-75 z-50">
           <div className="bg-gray-700 rounded-lg p-4 relative shadow-lg max-w-lg w-full">
             <div className="flex justify-between items-center mb-4">
               <p className="text-xl font-semibold text-white text-center w-full">
