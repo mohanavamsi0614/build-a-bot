@@ -91,7 +91,7 @@ function Payment() {
       <div className="w-full max-w-md space-y-4 container p-6 border rounded">
         <h3 className="text-xl text-white">🔒Payment</h3>
         <p className="text-white">
-          <b>Info:</b> Please scan the QR code below to make a payment or click on the pay button for:
+          <b>Info:</b> Please scan the QR code below to make a payment for:
         </p>
         <div className="text-white border p-4 rounded">
           <p className="font-bold text-center">{data.teamName}</p>
@@ -115,10 +115,11 @@ function Payment() {
         </p>
         <div className="w-full flex flex-col justify-center p-4 bg-white bg-opacity-20 backdrop-blur rounded-lg shadow-md">
           <p className="text-white">Scan Here To Pay:</p>
-          <div className="w-full flex justify-center items-center">
-            <img src={qr} alt="QR Code for Payment" className="w-32 h-32 object-contain" />
+          <div className="w-full flex flex-col justify-center items-center">
+            <img src={qr} alt="QR Code for Payment" className=" w-72 object-contain" />
+            <p className=" text-[#E16254] font-bold border p-4 mt-2">Use Only Gpay</p>
           </div>
-          <div className="w-full flex justify-between items-center">
+          {/* <div className="w-full flex justify-between items-center">
             <hr className="w-1/2" /> <p className="text-white font-bold m-2">OR</p> <hr className="w-1/2" />
           </div>
           <div
@@ -126,7 +127,7 @@ function Payment() {
             className="w-auto bg-[#E16254] h-3 text-white border p-5 flex justify-center items-center cursor-pointer"
           >
             <p>Click here to Pay</p>
-          </div>
+          </div> */}
         </div>
 
         <div>
