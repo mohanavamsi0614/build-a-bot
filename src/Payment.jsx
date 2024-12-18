@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import api from "./api";
 import Modal from "./Model";
@@ -11,8 +11,25 @@ function Payment() {
   const [imgUrl, seturl] = useState("");
   const [e, sete] = useState("");
   const [isDone,setisDone]=useState(false)
+  const [link,setlink]=useState("")
   const [isLoading, setIsLoading] = useState(false);
   const data = useLocation().state;
+  const wid=useRef()
+  useEffect(() => {
+    let myWidget = cloudinary.createUploadWidget(
+      {
+        cloudName: "dus9hgplo",
+        uploadPreset: "vh0llv8b",
+      },
+      (error, result) => {
+        if (!error && result && result.event === "success") {
+          console.log("Done! Here is the image info: ", result.info);
+          setlink(result.info.secure_url);
+        }
+      }
+    );
+    wid.current = myWidget;
+  }, []);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -31,20 +48,12 @@ function Payment() {
     }
   }
 
-  const photo = async (e) => {
-    const reader = new FileReader();
-    reader.onload = async function (e) {
-      sete(e.target.result);
-    };
-    reader.readAsDataURL(e.target.files[0]);
-  };
-
   async function handleSubmit() {
     setIsLoading(true);
     console.log(data, upiId, transtationId, imgUrl);
 
-    if (upiId !== "" && transtationId !== "" && e !== "") {
-      const imgurl=await url(e);
+    if (upiId !== "" && transtationId !== "" && link !== "") {
+      const imgurl=link
       const finaldata = { ...data, upiId, transtationId, imgUrl:imgurl };
       console.log(finaldata);
 
@@ -153,18 +162,11 @@ function Payment() {
           <label htmlFor="transactionScreenshot" className="text-white">
             Transaction Screenshot: <span className="text-red-700">*</span>
           </label>
-          <input
-            type="file"
-            onChange={(e) => {
-              photo(e);
-            }}
-            id="transactionScreenshot"
-            className="w-full p-3 mb-2 mt-1 text-white shadow-inner bg-white bg-opacity-10 backdrop-blur-md rounded-lg border-none focus:ring-2 focus:ring-blue-400"
-          />
+         <div className=" flex justify-center"><button onClick={()=>{wid.current.open()}} className="  w-72 h-12 rounded-lg bg-[#E16254] text-white">Upload Your Screenshot</button></div>
         </div>
       </div>
 
-      <button onClick={handleSubmit} className="w-40 font-semibold bg-white rounded-full h-14 m-3 border text-black">
+      <button onClick={handleSubmit} className="w-40  font-semibold bg-white rounded-full h-14 m-3 border text-black">
         Submit
       </button>
       {(isLoading || isDone) && (

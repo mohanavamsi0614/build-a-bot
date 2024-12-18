@@ -35,6 +35,8 @@ function PaymentCard({ team }) {
 
         {full && (
           <div className="mb-4">
+          <h3 className=" font-bold text-black">Team Lead:</h3>
+          <p className=" text-gray-700">{team.lead.name}</p>
             <h3 className="text-lg font-semibold text-gray-700 mb-2">
               Team Members:
             </h3>
