@@ -1,19 +1,41 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router';
-
+const defaultData = {
+  teamName: "",
+  lead: {
+    name: "",
+    regNumber: "",
+    email: "",
+    type: "",
+  },
+  members: [ { name: '', regNumber: '', type: '' },
+    { name: '', regNumber: '', type: '' },
+    { name: '', regNumber: '', type: '' },
+    { name: '', regNumber: '', type: '' },
+],
+};
 const Form = () => {
-  const [teamName, setTeamName] = useState('');
-  const [leadName, setLeadName] = useState('');
-  const [leadRegNumber, setLeadRegNumber] = useState('');
-  const [leadEmail, setLeadEmail] = useState('');
-  const [leadType,setLeadType]=useState('')
+  const storedData = JSON.parse(localStorage.getItem("formData")) || {};
+  const [teamName, setTeamName] = useState(storedData.teamName || defaultData.teamName);
+  const [leadName, setLeadName] = useState(storedData.lead?.name || defaultData.lead.name);
+  const [leadRegNumber, setLeadRegNumber] = useState(storedData.lead?.regNumber || defaultData.lead.regNumber);
+  const [leadEmail, setLeadEmail] = useState(storedData.lead?.email || defaultData.lead.email);
+  const [leadType, setLeadType] = useState(storedData.lead?.type || defaultData.lead.type);
+  const [members, setMembers] = useState(storedData.members || defaultData.members);
+  useEffect(() => {
+    const formData = {
+      teamName,
+      lead: {
+        name: leadName,
+        regNumber: leadRegNumber,
+        email: leadEmail,
+        type: leadType,
+      },
+      members,
+    };
+    localStorage.setItem('formData', JSON.stringify(formData));
+  }, [teamName, leadName, leadRegNumber, leadEmail, leadType, members]);
 
-  const [members, setMembers] = useState([
-    { name: '', regNumber: '', type: '' },
-    { name: '', regNumber: '', type: '' },
-    { name: '', regNumber: '', type: '' },
-    { name: '', regNumber: '', type: '' },
-  ]);
   const handleMemberChange = (index, field, value) => {
     const updatedMembers = [...members];
     updatedMembers[index][field] = value;
@@ -99,7 +121,7 @@ const Form = () => {
             placeholder="Enter registration number..."
             className="w-full p-3 mb-2 mt-1 text-white shadow-inner bg-white bg-opacity-10 backdrop-blur-md rounded-lg border-none focus:ring-2 focus:ring-blue-400"
           />
-          <label htmlFor="leadEmail" className="text-white mt-3">Email:  <span className=' text-red-700'>*</span></label>
+          <label htmlFor="leadEmail" className="text-white mt-3">Collage mail:  <span className=' text-red-700'>*</span></label>
           <input
             type="email"
             id="leadEmail"
