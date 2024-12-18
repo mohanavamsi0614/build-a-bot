@@ -55,12 +55,12 @@ function Home() {
                 <div className="w-96 flex flex-col justify-center items-center mb-10">
                     <h1 className="text-3xl font-bold">Why</h1>
                     <h2 className="text-2xl mt-2">Should You Join?</h2>
-                    <ul className="list-disc m-3">
-                        <li className="mt-2"><span className=" font-bold">1.</span> Enhance your problem-solving and technical skills.</li>
-                        <li className="mt-2"><span className=" font-bold">2.</span>Network with like-minded peers and industry professionals.</li>
-                        <li className="mt-2"><span className=" font-bold">3.</span>Showcase your creativity and innovation in robotics.</li>
-                        <li className="mt-2"><span className=" font-bold">4.</span>Compete for exciting prizes and recognition.</li>
-                        <li className="mt-2"><span className=" font-bold">5.</span>Have an unforgettable experience full of learning and fun!</li>
+                    <ul className=" m-3">
+                        <li className="mt-2"><span className=" font-bold">1. </span> Enhance your problem-solving and technical skills.</li>
+                        <li className="mt-2"><span className=" font-bold">2. </span>Network with like-minded peers and industry professionals.</li>
+                        <li className="mt-2"><span className=" font-bold">3.  </span>Showcase your creativity and innovation in robotics.</li>
+                        <li className="mt-2"><span className=" font-bold">4. </span>Compete for exciting prizes and recognition.</li>
+                        <li className="mt-2"><span className=" font-bold">5. </span>Have an unforgettable experience full of learning and fun!</li>
                     </ul>
                 </div>
 

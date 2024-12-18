@@ -3,18 +3,20 @@ import { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import api from "./api";
 import Modal from "./Model";
-import done from "/1cbd3594bb5e8d90924a105d4aae924c.gif"
-import qr from "/public/WhatsApp Image 2024-10-25 at 22.50.47_5fab87af.jpg"
+import done from "/1cbd3594bb5e8d90924a105d4aae924c.gif";
+import qr from "/public/WhatsApp Image 2024-10-25 at 22.50.47_5fab87af.jpg";
+
 function Payment() {
   const [upiId, setupi] = useState("");
   const [transtationId, settxn] = useState("");
   const [imgUrl, seturl] = useState("");
-  const [e, sete] = useState("");
-  const [isDone,setisDone]=useState(false)
-  const [link,setlink]=useState("")
+  const [isDone, setisDone] = useState(false);
+  const [link, setlink] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(""); // Error state for modal messages
   const data = useLocation().state;
-  const wid=useRef()
+  const wid = useRef();
+
   useEffect(() => {
     let myWidget = cloudinary.createUploadWidget(
       {
@@ -25,6 +27,9 @@ function Payment() {
         if (!error && result && result.event === "success") {
           console.log("Done! Here is the image info: ", result.info);
           setlink(result.info.secure_url);
+        } else if (error) {
+          console.error("Error during Cloudinary upload:", error);
+          setError("Image upload failed! Please try again.");
         }
       }
     );
@@ -35,38 +40,30 @@ function Payment() {
     window.scrollTo(0, 0);
   }, []);
 
-  async function url(e) {
-    try {
-      const response = await axios.post("https://api.cloudinary.com/v1_1/dus9hgplo/image/upload", {
-        file: e,
-        upload_preset: "vh0llv8b",
-      });
-      console.log("File uploaded successfully:", response.data);
-      return response.data.secure_url
-    } catch (error) {
-      console.error("Error uploading photo:", error);
-    }
-  }
-
   async function handleSubmit() {
     setIsLoading(true);
-    console.log(data, upiId, transtationId, imgUrl);
 
-    if (upiId !== "" && transtationId !== "" && link !== "") {
-      const imgurl=link
-      const finaldata = { ...data, upiId, transtationId, imgUrl:imgurl };
-      console.log(finaldata);
+    // Basic Validation
+    if (!upiId || !transtationId || !link) {
+      setError("All fields are required! Please fill in UPI ID, Transaction Number, and upload the screenshot.");
+      setIsLoading(false);
+      return;
+    }
 
-      try {
-        const response = await axios.post(`${api}/event/register`, finaldata);
-        console.log(response);
-        setIsLoading(false);
-        setisDone(true)
-      } catch (error) {
-        console.error("Error during payment submission", error);
-        setIsLoading(false);
-      }
-    } else {
+    const imgurl = link;
+    const finaldata = { ...data, upiId, transtationId, imgUrl: imgurl };
+    console.log(finaldata);
+
+    try {
+      const response = await axios.post(`${api}/event/register`, finaldata);
+      console.log(response);
+      setIsLoading(false);
+      setisDone(true);
+    } catch (error) {
+      console.error("Error during payment submission:", error);
+      setError(
+        "Something went wrong during submission! Please try again or contact us at 6281605767 or codingblocks@klu.ac.in."
+      );
       setIsLoading(false);
     }
   }
@@ -77,7 +74,6 @@ function Payment() {
     const name = "Deepak Bussa";
 
     const upiUrl = `upi://pay?pa=${upiId}&pn=${name}&am=${amount}&cu=INR`;
-
     window.location.href = upiUrl;
   };
 
@@ -113,36 +109,35 @@ function Payment() {
           </b>
         </div>
         <p className="text-white">
-          Total of <b className="text-[#E16254] text-xl">₹1000 </b> using any UPI app. And also provide your UPI
-          Id and Transaction Number for our reference.
+          Total of <b className="text-[#E16254] text-xl">₹1000 </b> using any UPI app. And also provide your UPI ID and
+          Transaction Number for our reference.
         </p>
         <div className="w-full flex flex-col justify-center p-4 bg-white bg-opacity-20 backdrop-blur rounded-lg shadow-md">
           <p className="text-white">Scan Here To Pay:</p>
           <div className="w-full flex justify-center items-center">
-            <div>
-              <img src={qr} alt="QR Code for Payment" className="w-32 h-32 object-contain" />
-            </div>
+            <img src={qr} alt="QR Code for Payment" className="w-32 h-32 object-contain" />
           </div>
           <div className="w-full flex justify-between items-center">
             <hr className="w-1/2" /> <p className="text-white font-bold m-2">OR</p> <hr className="w-1/2" />
           </div>
-          <div onClick={handlePayment} className="w-auto bg-[#E16254] h-3 text-white border p-5 flex justify-center items-center cursor-pointer">
+          <div
+            onClick={handlePayment}
+            className="w-auto bg-[#E16254] h-3 text-white border p-5 flex justify-center items-center cursor-pointer"
+          >
             <p>Click here to Pay</p>
           </div>
         </div>
 
         <div>
           <label htmlFor="upi" className="text-white">
-            Your UPI id: <span className="text-red-700">*</span>
+            Your UPI ID: <span className="text-red-700">*</span>
           </label>
           <input
             type="text"
             id="upi"
             value={upiId}
-            onChange={(e) => {
-              setupi(e.target.value);
-            }}
-            placeholder="UPI Id"
+            onChange={(e) => setupi(e.target.value)}
+            placeholder="UPI ID"
             className="w-full p-3 text-white bg-white m-0 bg-opacity-10 rounded-lg border-none focus:ring-2 focus:ring-blue-400"
           />
 
@@ -152,33 +147,62 @@ function Payment() {
           <input
             type="text"
             id="txn"
-            onChange={(e) => {
-              settxn(e.target.value);
-            }}
             value={transtationId}
+            onChange={(e) => settxn(e.target.value)}
             placeholder="Transaction Number"
             className="w-full mb-2 mt-1 p-3 text-white bg-white bg-opacity-10 rounded-lg border-none focus:ring-2 focus:ring-blue-400"
           />
+
           <label htmlFor="transactionScreenshot" className="text-white">
             Transaction Screenshot: <span className="text-red-700">*</span>
           </label>
-         <div className=" flex justify-center"><button onClick={()=>{wid.current.open()}} className="  w-72 h-12 rounded-lg bg-[#E16254] text-white">Upload Your Screenshot</button></div>
+          <div className="flex justify-center">
+            <button
+              onClick={() => wid.current.open()}
+              className="w-72 h-12 rounded-lg bg-[#E16254] text-white"
+            >
+              Upload Your Screenshot
+            </button>
+          </div>
         </div>
       </div>
 
-      <button onClick={handleSubmit} className="w-40  font-semibold bg-white rounded-full h-14 m-3 border text-black">
+      <button
+        onClick={handleSubmit}
+        className="w-40 font-semibold bg-white rounded-full h-14 m-3 border text-black"
+      >
         Submit
       </button>
-      {(isLoading || isDone) && (
+
+      {/* Modal for Success or Error */}
+      {(isLoading || isDone || error) && (
         <Modal isLoading={isLoading}>
-        <div className="modal-content">
-        <img src={done}/>
-          <p className=" text-xl font-bold">Registration successfully!</p>
-          <p className=" font-mono w-full">Please have a look in your inbox we will be sending you the conformation mail. Thank you!</p>
-          <Link to="/"><button className=" bg-[#E16254] w-24 p-4 text-white rounded mt-5">Home</button></Link>
-        </div>
-      </Modal>)}
-      
+          {isDone && (
+            <div className="modal-content">
+              <img src={done} alt="Success" />
+              <p className="text-xl font-bold">Registration successfully!</p>
+              <p className="font-mono w-full">
+                Please check your inbox for the confirmation mail. Thank you!
+              </p>
+              <Link to="/">
+                <button className="bg-[#E16254] w-24 p-4 text-white rounded mt-5">Home</button>
+              </Link>
+            </div>
+          )}
+          {error && (
+            <div className="modal-content">
+              <p className="text-xl font-bold text-red-500">Error</p>
+              <p className="font-mono w-full">{error}</p>
+              <button
+                onClick={() => setError("")}
+                className="bg-[#E16254] w-24 p-4 text-white rounded mt-5"
+              >
+                Close
+              </button>
+            </div>
+          )}
+        </Modal>
+      )}
     </div>
   );
 }
