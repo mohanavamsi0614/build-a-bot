@@ -12,7 +12,6 @@ function PaymentCard({ team }) {
     const passcode=prompt("Enter the password:")
         if(passcode=="cbkare2024"){
     try {
-
       setLoading(true);
       const response = await axios.get(`${api}/event/team/${id}`);
       console.log(response.data);

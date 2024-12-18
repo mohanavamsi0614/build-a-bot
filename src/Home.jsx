@@ -37,9 +37,15 @@ function Home() {
                 </div>
 
                 <div>
-                    <button className="bg-white text-black p-3 rounded-full mt-5 hover:bg-gray-200" onClick={() => { nav("/registration") }}>
+                    {/* <button className="bg-white text-black p-3 rounded-full mt-5 hover:bg-gray-200" onClick={() => { nav("/registration") }}>
                         Register Now!
-                    </button>
+                    </button> */}
+                    <button
+        className=" font-semibold bg-white bg-opacity-5  rounded-full h-14 m-3 border text-white p-4"
+        disabled={true}
+      >
+        Registration Freezed For Now!
+      </button>
                 </div>
             </div>
 
@@ -122,9 +128,15 @@ function Home() {
                         <b className="text-[#E16254]">NOTE:</b> Please ensure the details provided are correct, as they will be used for further communication. The details will also be verified during the offline presentation. Use your college email address if available.
                     </p>
                     <div>
-                        <button className="bg-white text-black p-3 rounded-full mt-5 hover:bg-gray-200" onClick={() => { nav("/registration") }}>
+                        {/* <button className="bg-white text-black p-3 rounded-full mt-5 hover:bg-gray-200" onClick={() => { nav("/registration") }}>
                             Register Now!
-                        </button>
+                        </button> */}
+                        <button
+        className=" font-semibold bg-white bg-opacity-5  rounded-full h-14 m-3 border text-white p-4"
+        disabled={true}
+      >
+        Registration Freezed For Now!
+      </button>
                     </div>
                 </div>
             </div>

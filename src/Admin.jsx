@@ -8,6 +8,8 @@ function Admin() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [count,setcount]=useState(0)
+  const [auth,setAuth]=useState(false)
+  const [pass,setpass]=useState("")
 
   useEffect(() => {
     const fetchData = async () => {
@@ -25,7 +27,7 @@ function Admin() {
     };
 
     fetchData();
-  }, []);
+  }, [pass]);
 
 
 
@@ -44,7 +46,7 @@ function Admin() {
       </div>
     );
   }
-
+  if(auth){
   return (
     <div className="w-full min-h-screen bg-gray-700 p-5">
       <h1 className="text-white text-3xl font-bold text-center mb-6">
@@ -102,5 +104,23 @@ function Admin() {
     </div>
   );
 }
+return (
+  <div className=" bg-gray-800 flex justify-center items-center h-screen ">
+  <div className=" flex flex-col justify-center items-center shadow-lg p-4 bg-white">
+    <label className=" text-black font-bold">Password</label>
+    <input value={pass} className=" bg-gray-700 h-10 p-4 rounded-md text-white" placeholder="Enter the Password" onChange={(e)=>{setpass(e.target.value)}}/>
+    <button className=" bg-[#E16256] p-2 rounded-lg mt-4 text-white font-bold" onClick={()=>{
+      if(pass=="itkare2024"){
+        setAuth(true)
+      }
+      else{
+        alert("workng")
+      }
+    }}>Verify!</button>
+  </div>
 
+  </div>
+)
+
+}
 export default Admin;

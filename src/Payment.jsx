@@ -167,11 +167,18 @@ function Payment() {
         </div>
       </div>
 
-      <button
+      {/* <button
         onClick={handleSubmit}
         className="w-40 font-semibold bg-white rounded-full h-14 m-3 border text-black"
       >
         Submit
+      </button> */}
+      <button
+        onClick={handleSubmit}
+        className=" font-semibold bg-white bg-opacity-5  rounded-full h-14 m-3 border text-white p-4"
+        disabled={true}
+      >
+        Registration Freezed For Now!
       </button>
 
       {/* Modal for Success or Error */}
