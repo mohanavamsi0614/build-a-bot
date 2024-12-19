@@ -89,7 +89,7 @@ const Form = () => {
     nav("/payment",{state:formData})
     }
     else{
-      seterror("Only IT-Department are allowed")
+      seterror("Only <span className='text-[#E16254]'>IT</span>-Department Stundents are allowed")
     }
   };
 
