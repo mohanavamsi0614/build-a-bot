@@ -89,7 +89,7 @@ const Form = () => {
     nav("/payment",{state:formData})
     }
     else{
-      seterror("Only IT-Department Stundents are allowed Now.")
+      seterror("Registration is now open only for IT students as all CSE slots are filled.")
     }
   };
 
