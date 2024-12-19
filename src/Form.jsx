@@ -89,7 +89,7 @@ const Form = () => {
     nav("/payment",{state:formData})
     }
     else{
-      seterror("Registration is now open only for IT students as all CSE slots are filled.")
+      seterror("Registration is now open only for <span className='text-[#E16254]'>IT</span> students as all <span className='text-[#E16254]'>CSE</span> slots are filled.")
     }
   };
 
@@ -220,7 +220,8 @@ const Form = () => {
         <div className='modal-overlay'>
                 <div className='modal-content flex flex-col justify-center items-center'>
                 <img src={errorlogo} className=' w-16   animate-pulse'/>
-                <p>{error}</p>
+                <p className="font-semibold mb-4">Registration is now open only for <span className='text-[#E16254] font-bold'>IT</span> students as all <span className='text-[#E16254] font-bold'>CSE</span> slots are filled.</p>
+
                 <button className=' p-2 bg-[#E16254] rounded text-white' onClick={()=>{nav("/")}}>Home</button>
                 </div>
                 </div>
