@@ -22,8 +22,8 @@ function Home() {
                     <div className="flex justify-center items-center mb-2 space-x-2">
                         
                         <div className="text-lg">
-                            <span className="font-bold">Date & Time:</span>
-                            <p>27-12-2024, 10:00 AM <span className=" text-[#E16254] font-bold">To</span> 28-12-2024, 10:00 AM</p>
+                            <span className="font-bold">Date:</span>
+                            <p>27-12-2024 <span className=" text-[#E16254] font-bold">To</span> 28-12-2024</p>
                         </div>
                     </div>
 
