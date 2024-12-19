@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router';
+import errorlogo from "/public/png-clipart-computer-icons-error-information-error-angle-triangle-thumbnail-removebg-preview.png"
 const defaultData = {
   teamName: "",
   lead: {
@@ -16,6 +17,7 @@ const defaultData = {
 };
 const Form = () => {
   const storedData = JSON.parse(localStorage.getItem("formData")) || {};
+  const [error,seterror]=useState("")
   const [teamName, setTeamName] = useState(storedData.teamName || defaultData.teamName);
   const [leadName, setLeadName] = useState(storedData.lead?.name || defaultData.lead.name);
   const [leadRegNumber, setLeadRegNumber] = useState(storedData.lead?.regNumber || defaultData.lead.regNumber);
@@ -78,7 +80,17 @@ const Form = () => {
       members,
     };
     console.log('Collected Form Data:', formData);
+    const leadRegNumberok=formData.lead.regNumber[6]=="8"
+    const membersok=formData.members.every((member)=>{
+      return member.regNumber[6]=="8"
+    })
+    console.log(leadRegNumberok,membersok)
+    if(leadRegNumberok && membersok){
     nav("/payment",{state:formData})
+    }
+    else{
+      seterror("Only IT-Department are allowed")
+    }
   };
 
   return (
@@ -204,6 +216,16 @@ const Form = () => {
           Next
         </button>
       </div>
+      {error && (
+        <div className='modal-overlay'>
+                <div className='modal-content flex flex-col justify-center items-center'>
+                <img src={errorlogo} className=' w-16   animate-pulse'/>
+                <p>{error}</p>
+                <button className=' p-2 bg-[#E16254] rounded text-white' onClick={()=>{nav("/")}}>Home</button>
+                </div>
+                </div>
+      )}
+
     </div>
   );
 };
