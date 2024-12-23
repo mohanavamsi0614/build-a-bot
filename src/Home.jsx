@@ -23,7 +23,7 @@ function Home() {
                         
                         <div className="text-lg">
                             <span className="font-bold">Date:</span>
-                            <p>27-12-2024 <span className=" text-[#E16254] font-bold">To</span> 28-12-2024</p>
+                            <p>28-12-2024 <span className=" text-[#E16254] font-bold">To</span> 29-12-2024</p>
                         </div>
                     </div>
 
