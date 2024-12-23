@@ -43,8 +43,6 @@ function Payment() {
 
   async function handleSubmit() {
     setIsLoading(true);
-
-    // Basic Validation
     if (!upiId || !transtationId || !link) {
       setError("All fields are required! Please fill in UPI ID, Transaction Number, and upload the screenshot.");
       setIsLoading(false);
@@ -169,21 +167,20 @@ function Payment() {
         </div>
       </div>
 
-      {/* <button
+      <button
         onClick={handleSubmit}
         className="w-40 font-semibold bg-white rounded-full h-14 m-3 border text-black"
       >
         Submit
-      </button> */}
-      <button
+      </button>
+      {/* <button
         onClick={handleSubmit}
         className=" font-semibold bg-white bg-opacity-5  rounded-full h-14 m-3 border text-white p-4"
         disabled={true}
       >
         Registration Freezed For Now!
-      </button>
+      </button> */}
 
-      {/* Modal for Success or Error */}
       {(isLoading || isDone || error) && (
         <Modal isLoading={isLoading}>
           {isDone && (

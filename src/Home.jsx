@@ -37,15 +37,15 @@ function Home() {
                 </div>
 
                 <div>
-                    {/* <button className="bg-white text-black p-3 rounded-full mt-5 hover:bg-gray-200" onClick={() => { nav("/registration") }}>
+                    <button className="bg-white text-black p-3 rounded-full mt-5 hover:bg-gray-200" onClick={() => { nav("/registration") }}>
                         Register Now!
-                    </button> */}
-                    <button
+                    </button>
+                    {/* <button
         className=" font-semibold bg-white bg-opacity-5  rounded-full h-14 m-3 border text-white p-4"
         disabled={true}
       >
         Registration Freezed For Now!
-      </button>
+      </button> */}
                 </div>
             </div>
 
