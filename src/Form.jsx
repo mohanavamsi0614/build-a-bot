@@ -80,17 +80,15 @@ const Form = () => {
       members,
     };
     console.log('Collected Form Data:', formData);
-    const leadRegNumberok=formData.lead.regNumber[6]=="8"
-    const membersok=formData.members.every((member)=>{
-      return member.regNumber[6]=="8"
-    })
-    console.log(leadRegNumberok,membersok)
-    if(leadRegNumberok && membersok){
+    // const leadRegNumberok=formData.lead.regNumber[6]=="8"
+    // const membersok=formData.members.every((member)=>{
+    //   return member.regNumber[6]=="8"
+    // })
+    // console.log(leadRegNumberok,membersok)
+    
     nav("/payment",{state:formData})
-    }
-    else{
-      seterror("Registration is now open only for <span className='text-[#E16254]'>IT</span> students as all <span className='text-[#E16254]'>CSE</span> slots are filled.")
-    }
+    
+   
   };
 
   return (
