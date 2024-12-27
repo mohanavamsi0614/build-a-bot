@@ -89,12 +89,13 @@ function Attd({ team }) {
       ))}
 
       <button
+      disabled={team.lead?.FirstAttd}
         onClick={(e)=>{
         
             sub(e)}}
-        className="w-full mt-4 py-3 bg-[#E16256] text-white font-bold rounded-md hover:bg-[#d94f4a] transition-colors"
+        className={`w-full mt-4 py-3 ${team.lead?.FirstAttd ? " bg-gray-700" : "bg-[#E16256]"}  text-white font-bold rounded-md  transition-colors`}
       >
-        Submit
+        {team.lead?.FirstAttd ? "Submited" : "Submit"}
       </button>
     </div>
   );

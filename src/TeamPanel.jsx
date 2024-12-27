@@ -204,7 +204,9 @@ function Clock() {
     const Navbar = () => (
         <nav className="bg-gray-800 p-4">
             <div className="container mx-auto flex justify-between items-center">
-                <h1 className="text-white text-2xl font-bold">Coding Blocks KARE</h1>
+            <div className=" flex items-center">
+            <img src={logo} className=" size-16 rounded-full relative top-1  "/>
+                <h1 className="text-white text-2xl font-bold">Coding Blocks KARE</h1></div>
                 <div>
                     <a href="#schedule" className="text-white mx-4 hover:text-gray-400">Event Schedule </a>
                     <a href="#leaderboard" className="text-white mx-4 hover:text-gray-400">Leaderboard</a>
@@ -321,17 +323,18 @@ function Clock() {
 </div>
 
                         <div className="mb-6 flex justify-between h-96">
-                            <div className="border w-1/2 p-4">
-                                <h1 className="text-3xl text-center">LeaderBoard</h1>
+                            <div className="border w-1/2 p-4 h-96">
+                                <h1 className="text-3xl text-center">Hunt LeaderBoard</h1>
                                 <div className="flex flex-col overflow-y-auto h-80 mt-2">
                                     {leaderboard.map((i, j) => (
-                                        <div key={j} className="p-1 bg-white mb-1 rounded flex justify-between">
-                                            <span className="  text-black text-lg">{j + 1}. {i.teamName}</span>
+                                        <div key={j} className="p-1  mb-1 rounded flex justify-between">
+                                            <span className="   text-lg">{j + 1}. {i.teamName}</span>
+                                            <span className="  mr-3"> {i.HuntScore}</span>
                                         </div>
                                     ))}
                                 </div>
                             </div>
-                            <div className="mb-6 border w-1/2 overflow-y-auto rounded ml-4">
+                            <div className="mb-6 border w-1/2 overflow-y-auto rounded ml-4 h-96">
                                 <h2 className="text-3xl text-center font-bold mb-4 mt-4">Event Schedule</h2>
                                 <div className="flex flex-col p-4 rounded">
                                     {events.map((item, index) => (
@@ -379,6 +382,8 @@ function Clock() {
                     <p className="text-center text-xl mt-10">Failed to load team data. Please try again later.</p>
                 )
             )}
+            <hr/>
+            <p className=" text-center p-4">Made with 💖 By Coding Blocks Kare</p>
         </div>
     );
 }
