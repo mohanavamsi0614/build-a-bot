@@ -44,7 +44,7 @@ function Score() {
   if (error) return <div className="text-center text-red-500 py-4">{error}</div>;
 
   return (
-    <div className="p-6">
+    <div className="p-6 w-full h-full">
       <h1 className="text-white text-3xl font-bold text-center mb-4">
         Scoring Panel
       </h1>
@@ -62,7 +62,7 @@ function Score() {
         ))}
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className=" flex flex-col gap-5">
         {getZoneData().map((team, index) => (
           <details
             key={team._id}
@@ -147,7 +147,7 @@ function ScoreCard({ team }) {
               {i} : {scores[i]}
             </p>
           ))}
-          <p>Total Score: {team.Score}</p>
+          <p>Total Score: {team.Score || total}</p>
         </div>
         <p>Done!</p>
       </div>
@@ -186,6 +186,12 @@ function ScoreCard({ team }) {
         </div>
       ))}
       <h1 className="text-black font-semibold">Total: {total}</h1>
+      <button className=" border rounded p-3 bg-gray-600 text-white" onClick={()=>{setScores({
+    "Understanding the PS": 0,
+    "Approach and Planning": 0,
+    "Out-of-the-Box Thinking": 0,
+    "Team Collaboration": 0,
+  })}}>Clear</button>
       <button
         onClick={send}
         disabled={submited}

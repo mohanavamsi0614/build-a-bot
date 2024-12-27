@@ -35,7 +35,6 @@ function PaymentCard({ team }) {
       const response = await axios.post(`${api}/event/pro/${id}`, { projectId });
       console.log("Project ID submitted:", response.data);
       setfinalprojectId(projectId)
-      alert("Project ID submitted successfully.");
     } catch (err) {
       console.error("Error submitting Project ID:", err);
       alert("Failed to submit Project ID.");
