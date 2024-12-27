@@ -383,7 +383,7 @@ function Clock() {
                 )
             )}
             <hr/>
-            <p className=" text-center p-4">Made with 💖 By Coding Blocks Kare</p>
+            <p className=" text-center p-4">Made with 💖 By Coding Blocks KARE</p>
         </div>
     );
 }
