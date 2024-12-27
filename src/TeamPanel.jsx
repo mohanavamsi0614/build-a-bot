@@ -324,7 +324,7 @@ function Clock() {
 
                         <div className="mb-6 flex justify-between h-96">
                             <div className="border w-1/2 p-4 h-96">
-                                <h1 className="text-3xl text-center">Hunt LeaderBoard</h1>
+                                <h1 className="text-3xl text-center">Bot Hunt LeaderBoard</h1>
                                 <div className="flex flex-col overflow-y-auto h-80 mt-2">
                                     {leaderboard.map((i, j) => (
                                         <div key={j} className="p-1  mb-1 rounded flex justify-between">
