@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { io } from "socket.io-client";
 import api from "./api";
-import Score from "./Score";
 
 const socket = io(api);
 
 function Hunt({ team }) {
   const [score, setScore] = useState(0);
   const [error, setError] = useState("");
+  const [final,setfinal]=useState(team.HuntScore)
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -17,8 +17,10 @@ function Hunt({ team }) {
       return;
     }
 
-    setError("");
     socket.emit("leaderboard", { ...team, HuntScore: Number(score) });
+    setError("Score Added");
+    setfinal(final+Number(score))
+
   }
 
   return (
@@ -28,7 +30,7 @@ function Hunt({ team }) {
 
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
-        <h1 className=" text-xl text-black mb-3"> Team Score {team?.HuntScore || score}</h1> 
+        <h1 className=" text-xl text-black mb-3"> Team Score {final}</h1> 
           <label htmlFor="score" className="block text-sm font-medium text-gray-700">
             Score
           </label>
@@ -37,7 +39,8 @@ function Hunt({ team }) {
             type="text"
             placeholder="Enter score"
             value={score}
-            onChange={(e) => setScore(e.target.value)}
+            onChange={(e) => {setScore(e.target.value)
+            setError("")}}
             className={`w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${
               error ? "border-red-500" : "border-gray-300"
             }`}

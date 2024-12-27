@@ -5,8 +5,8 @@ import api from "./api";
 import { io } from "socket.io-client";
 import problems from "./assets/problem"
 import kalasalingam from "/public/kalasalingam.png"
-import cb from "/public/KARE(latest).png"
-import lod from "/public/image_processing20210907-13511-1juj33d.gif"
+import cb from "/KARE(latest).png"
+import lod from "/image_processing20210907-13511-1juj33d.gif"
 const socket = io(api);
 
 function TeamPanel() {
@@ -69,7 +69,7 @@ function TeamPanel() {
               "isDone": false
             },
             {
-              "name": "Late-Night Refreshments & Surprise Games",
+              "name": "Late-Night Refreshments",
               "date": "29",
               "time": "3:30 AM - 4:00 AM",
               "isDone": false
@@ -156,7 +156,7 @@ function Clock() {
             });
             axios.get(`${api}/event/students`).then((res) => {
                 const data = res.data;
-                setLeaderboard(data.sort((a, b) => b.Score - a.Score).slice(0, 10));
+                setLeaderboard(data.sort((a, b) => b.HuntScore - a.HuntScore).slice(0, 10));
             });
     };
 
@@ -165,7 +165,7 @@ function Clock() {
             setLoading(true);
             axios.get(`${api}/event/students`).then((res) => {
                 const data = res.data;
-                setLeaderboard(data.sort((a, b) => b.Score - a.Score).slice(0, 10));
+                setLeaderboard(data.sort((a, b) => b.HuntScore - a.HuntScore).slice(0, 10));
             });
             axios.post(`${api}/event/team/${pass}`)
                 .then((res) => {
@@ -237,6 +237,7 @@ function Clock() {
                             value={pass}
                             onChange={(e) => setPass(e.target.value)}
                         />
+                        <p>The Password is on your table</p>
                     </div>
                     <button
                         className="bg-red-500 py-3 rounded-md text-white font-semibold hover:bg-red-600 transition duration-200"
