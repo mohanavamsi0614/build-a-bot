@@ -4,35 +4,138 @@ import axios from "axios";
 import api from "./api";
 import { io } from "socket.io-client";
 import problems from "./assets/problem"
-
+import kalasalingam from "/public/kalasalingam.png"
+import cb from "/public/KARE(latest).png"
+import lod from "/public/image_processing20210907-13511-1juj33d.gif"
 const socket = io(api);
 
 function TeamPanel() {
     const [pass, setPass] = useState(localStorage.getItem("token") || "");
     const [team, setTeam] = useState(null);
+    const eventSchedule = 
+        [
+            {
+              "name": "Inauguration Ceremony",
+              "date": "26",
+              "time": "2:30 PM",
+              "isDone": false
+            },
+            {
+              "name": "Problem Statement Selection",
+              "date": "28",
+              "time": "11:40 AM",
+              "isDone": false
+            },
+            {
+              "name": "Lunch Break",
+              "date": "28",
+              "time": "1:00 PM - 2:00 PM",
+              "isDone": false
+            },
+            {
+              "name": "Review 1",
+              "date": "28",
+              "time": "3:00 PM",
+              "isDone": false
+            },
+            {
+              "name": "Refreshments",
+              "date": "28",
+              "time": "4:30 PM - 4:45 PM",
+              "isDone": false
+            },
+            {
+              "name": "Dinner",
+              "date": "28",
+              "time": "7:00 PM - 8:00 PM",
+              "isDone": false
+            },
+            {
+              "name": "Cultural Program",
+              "date": "28",
+              "time": "20:00 PM",
+              "isDone": false
+            },
+            {
+              "name": "Review 2",
+              "date": "28",
+              "time": "10:00 ",
+              "isDone": false
+            },
+            {
+              "name": "Midnight Refreshments",
+              "date": "28",
+              "time": "11:00 PM",
+              "isDone": false
+            },
+            {
+              "name": "Late-Night Refreshments & Surprise Games",
+              "date": "29",
+              "time": "3:30 AM - 4:00 AM",
+              "isDone": false
+            },
+            {
+              "name": "Get Ready and Have Breakfast",
+              "date": "29",
+              "time": "7:00 AM - 8:00 AM",
+              "isDone": false
+            },
+            {
+              "name": "Final Review",
+              "date": "29",
+              "time": "8:00 AM",
+              "isDone": false
+            },
+            {
+              "name": "Prize Distribution Ceremony",
+              "date": "29",
+              "time": "10:00 AM",
+              "isDone": false
+            }
+          ]
+    const [events, setEvents] = useState(eventSchedule);
+
     const [link, setLink] = useState(localStorage.getItem("link") || "");
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState("");
     const [leaderboard, setLeaderboard] = useState([]);
     const [ProblemID,setProblemID]=useState()
 
-    const eventSchedule = [
-        { time: "20:30", event: "Inauguration Ceremony" },
-        { time: "9:45", event: "Prayer" },
-        { time: "10:00", event: "Lighting the Lamp" },
-        { time: "10:15", event: "Welcome Address: Dr. R. Sundarrajan" },
-        { time: "10:25", event: "Felicitation Address: HOD, IT Department" },
-        { time: "10:40", event: "Chief Guest Speech" },
-        { time: "10:50", event: "Introduction to Resource Person" },
-        { time: "11:05", event: "Resource Person 1 (Ibunu Abdul Rahman B)" },
-        { time: "11:20", event: "Overview of the Hackathon: By Athitya" },
-        { time: "11:30", event: "Resource Person 2 (Justice)" },
-        { time: "10:00", event: "Prize Distribution Ceremony" },
-        { time: "10:20", event: "Feedback from Resource Persons" },
-        { time: "10:30", event: "Vote of Thanks" },
-        { time: "10:40", event: "National Anthem" },
-        { time: "10:50", event: "Initiatives and Future Plans" },
-    ];
+          
+
+function Clock() {
+  const [time, setTime] = useState(new Date().toLocaleTimeString());
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      const currentDate = new Date();
+      const currentTime = currentDate.getTime();
+      
+      const updatedEvents = events.map((event) => {
+        const eventTimeString = `${event.date} ${event.time}`;
+        const eventDate = new Date(`${event.date} ${event.time}`); 
+
+        if (currentDate.getDate() === parseInt(event.date) && currentTime >= eventDate.getTime() && !event.isDone) {
+          return { ...event, isDone: true };
+        }
+        return event;
+      });
+
+      setEvents(updatedEvents); 
+      setTime(currentDate.toLocaleTimeString());
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, [events]); 
+
+
+  return (
+    <div style={{ fontSize: "24px", fontWeight: "bold", textAlign: "center" }}>
+      Current Time: {time}
+    </div>
+  );
+}
+
 
     const verify = () => {
         setLoading(true);
@@ -97,15 +200,7 @@ function TeamPanel() {
         });
 
     const attendanceClass = (attendance) => 
-        attendance === "Present" ? "text-green-500" : "text-red-500";
-
-    const isEventDone = (eventTime) => {
-        const [hours, minutes] = eventTime.split(':');
-        const eventDate = new Date();
-        eventDate.setHours(hours, minutes, 0, 0);
-        // console.log(eventDate)
-        return eventDate < new Date();
-    };
+        attendance === "P" ? "text-green-500" : "text-red-500";
 
     const Navbar = () => (
         <nav className="bg-gray-800 p-4">
@@ -123,8 +218,15 @@ function TeamPanel() {
     if (!localStorage.getItem("token")) {
         return (
             <div className="bg-gray-800 w-full h-screen flex justify-center flex-col items-center font-mono">
-                <h1 className="text-4xl text-center mb-6 text-white font-bold">Coding Blocks Kare <span className="text-[#E16255]">Build A Bot</span> 24</h1>
-                <div className="bg-white rounded-lg shadow-lg p-8 w-96 flex flex-col">
+                <div className="w-full flex justify-center items-center">
+                    <img src={kalasalingam} className="size-20" alt="Kalasalingam Logo" />
+                    <img src={cb} className="size-24 relative ml-5 rounded-full" alt="Coding Blocks Logo" />
+                </div>
+                <p className="text-3xl font-bold text-center text-white">
+                    <span className="text-[#E16254]">Coding Blocks Kare</span> Presents
+                </p>
+                <h1 className="text-5xl mt-2 text-white">Build a Bot</h1>
+                <p className="text-xl m-2 text-white">A 24-Hours Hackathon</p><div className="bg-white rounded-lg shadow-lg p-8 w-96 flex flex-col">
                     <h1 className="text-4xl font-semibold text-center mb-6">Team Access Panel</h1>
                     {error && <p className="text-red-500 text-center mb-4">{error}</p>}
                     <div className="flex flex-col mb-6">
@@ -153,7 +255,9 @@ function TeamPanel() {
         <div className="bg-gray-900 w-full h-full text-white flex flex-col">
             <Navbar />
             {loading ? (
-                <p className="text-center text-xl mt-10">Loading...</p>
+                <div className=" w-full h-screen flex flex-col justify-center items-center">
+                <div><img src={lod} className=" size-48 rounded-full"/></div>
+                <p className="text-center text-2xl mt-10 font-bold">Loading...</p></div>
             ) : (
                 team ? (
                     <div className="w-full max-w-5xl p-6 mx-auto">
@@ -166,9 +270,10 @@ function TeamPanel() {
                                 <h2 className="text-xl font-bold mb-4">Members</h2>
                                 <div className="border border-gray-700 rounded-lg h-40 overflow-y-auto p-4">
                                     {team.members.map((member, index) => (
-                                        <p key={index} className="mb-2"> 🦖 {member.name} ({member.regNumber})</p>
+                                        <p key={index} className="mb-2">{index+1}. {member.name} ({member.regNumber})</p>
                                     ))}
                                 </div>
+                                <Clock/>
                                 <div>
                                     <table className="table-auto rounded-lg border-collapse border mt-4 border-gray-300 w-full text-left">
                                         <thead>
@@ -203,40 +308,46 @@ function TeamPanel() {
                             </div>
                         </div>
                      
-                        <div className="mb-6">
-                            <h2 className="text-3xl text-center font-bold mb-4">Assigned Task</h2>
-                            <h1>{problems[(ProblemID)].title}</h1> 
-                             <pre className="text-lg  break-words w-96">{problems[(ProblemID)].description}</pre>
-                        </div>
+                        <div className="mb-6 p-6 bg-gray-800 rounded-lg shadow-lg">
+    <h2 className="text-4xl text-center font-bold text-[#E16255] mb-4">Assigned Task</h2>
+    {ProblemID !== undefined ? (
+        <>
+            <h1 className="text-3xl font-semibold text-white text-center mb-4">{problems[ProblemID]?.title}</h1>
+            <p className="text-2xl text-gray-300 break-words leading-relaxed">{problems[ProblemID]?.description}</p>
+        </>
+    ) : (
+        <p className="text-center text-gray-400 italic">No task assigned yet. Please check back later.</p>
+    )}
+</div>
+
                         <div className="mb-6 flex justify-between h-96">
                             <div className="border w-1/2 p-4">
                                 <h1 className="text-3xl text-center">LeaderBoard</h1>
-                                <div className="flex flex-col overflow-y-auto h-80">
+                                <div className="flex flex-col overflow-y-auto h-80 mt-2">
                                     {leaderboard.map((i, j) => (
-                                        <div key={j} className="py-1 flex justify-between">
-                                            <span>{j + 1}. {i.teamName}</span>
-                                            <span>{i.Score}</span>
+                                        <div key={j} className="p-1 bg-white mb-1 rounded flex justify-between">
+                                            <span className="  text-black text-lg">{j + 1}. {i.teamName}</span>
                                         </div>
                                     ))}
                                 </div>
                             </div>
                             <div className="mb-6 border w-1/2 overflow-y-auto rounded ml-4">
-                                <h2 className="text-3xl text-center font-bold mb-4">Event Schedule</h2>
+                                <h2 className="text-3xl text-center font-bold mb-4 mt-4">Event Schedule</h2>
                                 <div className="flex flex-col p-4 rounded">
-                                    {eventSchedule.map((item, index) => (
+                                    {events.map((item, index) => (
                                         <div key={index} className="flex justify-between border-b border-gray-600 py-2">
                                             <span className="text-lg font-semibold">{item.time}</span>
-                                            <span className="text-lg">{item.event} {isEventDone(item.time) && <span className="text-green-500">✔️</span>}</span>
+                                            <span className={` ${item.isDone && " bg-green-400 text-white"} text-lg `}>{item.name} {item.isDone && <span className="text-green-500">✔️</span>}</span>
                                         </div>
                                     ))}
                                 </div>
                             </div>
                         </div>
-                        <div>
+                        {/* <div>
                             <h2 className="text-3xl text-center font-bold mb-4">Resources</h2>
                             <p className="text-lg">Please use the provided resources for development.</p>
-                        </div>
-                        <div className="mb-6">
+                        </div> */}
+                        {/* <div className="mb-6">
                             <h2 className="text-2xl font-bold mb-4">Submit GitHub Repository Link</h2>
                             <p className="text-lg mb-4">Share the repository link containing your progress and final submission.</p>
                             <div className="flex items-center">
@@ -262,7 +373,7 @@ function TeamPanel() {
                                     </button>
                                 )}
                             </div>
-                        </div>
+                        </div> */}
                     </div>
                 ) : (
                     <p className="text-center text-xl mt-10">Failed to load team data. Please try again later.</p>

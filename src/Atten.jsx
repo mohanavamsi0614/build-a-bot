@@ -32,7 +32,7 @@ function Attd({ team }) {
     const allDone = attendance.members.every(i => i.FirstAttd === "P" || i.FirstAttd === "A");
     if (attendance.lead.FirstAttd && allDone) {
       e.currentTarget.disabled = true;
-      e.currentTarget.style.backgroundcolor="grey";
+      e.currentTarget.style.backgroundColor="grey";
       socket.emit("admin", attendance)
     } else {
       alert("Please mark attendance for all members and the lead.");

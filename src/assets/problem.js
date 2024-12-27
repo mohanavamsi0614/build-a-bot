@@ -1,115 +1,45 @@
 const hackathonIdeas = [
   {},
-    {
-      title: "AI Help Bot: Your Virtual Customer Support Agent",
-      description: `
-        Develop a stateoftheart AIpowered chatbot that acts as a dedicated virtual customer support agent for businesses. 
-        The bot should be capable of understanding user queries accurately and providing instant solutions in a natural conversational flow. 
-        Key features include:
-        
-        Multilingual Support: Cater to a global audience by handling queries in multiple languages. 
-        
-        Contextual Understanding: Ensure the bot remembers the conversation context for a seamless user experience.
-        
-        Issue Escalation: Automatically identify complex problems and escalate them to the appropriate department or human agent, with a detailed summary of the issue. 
-        
-        High Accuracy: Use machine learning and NLP to minimize errors and provide precise solutions. 
-        The focus should be on creating a robust system that enhances customer satisfaction and reduces the workload on human support agents.
-      `,
-    },
-    {
-      title: "Generative AI App: Bring Your Stories to Life",
-      description: `
-        Build a cuttingedge Generative AI application that transforms usersubmitted stories, ideas, or prompts into engaging multimedia experiences. 
-        Features to include:
-        
-        Interactive Scripts: Generate detailed scripts for plays, movies, or storytelling sessions.
-        
-        Dynamic Visual Scenes: Leverage AI to create animated or video representations of the user’s ideas. 
-        
-        AIEnhanced Storytelling: Add characters, dialogues, plot twists, and creative elements to enhance the narrative.
-        
-        Immersive Formats: Support formats such as videos, storyboards, or interactive experiences.
-        This application should aim to redefine storytelling by making it accessible, creative, and immersive, catering to both individuals and professional creators.
-      `,
-    },
-    {
-      title: "AI Siri Clone: Your AllinOne Voice Assistant",
-      description: `
-        Create a powerful AIbased voice assistant similar to Siri, offering comprehensive voiceinteraction capabilities. 
-        Key functionalities to include:
-        
-        SpeechtoText Conversion: Accurately transcribe spoken words into text.
-        
-        Natural Conversational Flow: Enable the assistant to understand and respond conversationally.
-        
-        Task Management: Allow users to set reminders, manage todo lists, and schedule events.
-        
-        General Knowledge Queries: Answer a wide range of questions using web search and knowledge bases.
-         Internet Searches: Perform searches and provide summarized results directly to the user.
-        Focus on creating an assistant that simplifies daytoday tasks, offers intelligent interactions, and enhances productivity.
-      `,
-    },
-    {
-      title: "AIPowered Video Streaming Platform",
-      description: `
-        Build a video streaming platform that integrates advanced AI to provide users with personalized content recommendations. 
-        Essential features include:
-        Recommendation Engine: Use AI to analyze user preferences, watch history, and behavior to suggest relevant movies, series, or shows.
-        User Profiles: Support multiple profiles with personalized suggestions for each user.
-        Search Optimization: Allow users to search for content based on mood, genre, or actors using AIpowered search.
-        Adaptive Learning: Continuously improve recommendations as the user interacts with the platform.
-        The goal is to deliver a tailored and enjoyable entertainment experience while enhancing user retention.
-      `,
-    },
-    {
-      title: "Personalized Health Coach Bot: Fitness at Your Fingertips",
-      description: `
-        Design an AIpowered health coach bot that acts as a personalized fitness and wellness guide for users. 
-        Core functionalities should include:
-        Health Tracking: Monitor steps, calorie intake, sleep patterns, and other fitness metrics.
-        Customized Plans: Generate workout routines and dietary plans tailored to the user’s health goals.
-        RealTime Tips: Provide actionable health tips and motivation in real time.
-        Integration: Sync with wearable devices like smartwatches for seamless data collection.
-        Aim to empower users to achieve their fitness goals efficiently and maintain a healthier lifestyle with AI's help.
-      `,
-    },
-    {
-      title: "Career Guidance Bot: Chart Your Future with AI",
-      description: `
-        Develop a career guidance chatbot that helps individuals navigate their professional journey with AIdriven insights. 
-        Features to include:
-        Skill Assessment: Analyze user skills, strengths, and interests to determine potential career paths.
-        Course Recommendations: Suggest online courses, certifications, or resources to enhance skills.
-        Industry Insights: Provide information about job trends, market demand, and growth opportunities.
-        Resume Building: Offer assistance in creating and optimizing resumes for specific roles.
-        This bot should act as a virtual career counselor, helping users make informed decisions about their future.
-      `,
-    },
-    {
-      title: "Financial Advisor Bot: Your Personal Finance Manager",
-      description: `
-        Build an AIpowered financial advisor bot to assist users in managing their finances and achieving their monetary goals. 
-        Key features:
-        Budget Planning: Help users create and maintain budgets based on their income and expenses.
-        Expense Tracking: Provide detailed insights into spending patterns.
-        Investment Advice: Offer tailored investment strategies and risk analysis.
-        Financial Tips: Deliver actionable advice for saving, reducing debt, and planning for the future.
-        This bot should aim to simplify financial management and improve users' financial literacy.
-      `,
-    },
-    {
-      title: "AI Chatbot for PDF Interaction",
-      description: `
-        Create an intelligent chatbot that enables users to upload PDF documents and interact with them conversationally. 
-        Features to implement:
+  {
+    title: "AI Help Bot: Your Virtual Customer Support Agent",
+    description: 
+      "Develop an AI-powered chatbot designed to serve as a virtual customer support agent for businesses. The bot should understand user queries with high accuracy, provide instant and context-aware solutions, and handle multilingual queries to cater to a global audience. For complex issues, the bot should automatically escalate the matter to human agents or specific departments with a detailed summary of the problem. The focus should be on reducing response time, enhancing customer satisfaction, and minimizing the workload on human support teams.",
+  },
+  {
+    title: "Generative AI App: Bring Your Stories to Life",
+    description: 
+      "Create a cutting-edge application that allows users to transform their stories, ideas, or prompts into immersive multimedia experiences. Features include generating detailed scripts for plays or movies, creating dynamic animations or video representations of user inputs, and enhancing narratives with AI-driven characters, dialogues, and plot twists. The app should support various formats such as videos, storyboards, and interactive experiences, making storytelling accessible and engaging for both individuals and professionals.",
+  },
+  {
+    title: "AI Siri Clone: Your All-in-One Voice Assistant",
+    description: 
+      "Build an AI-based voice assistant with advanced voice-interaction capabilities. The assistant should accurately transcribe speech into text, manage daily tasks such as setting reminders and creating to-do lists, and provide answers to general knowledge queries. Additionally, it should perform web searches, deliver concise summaries of search results, and offer natural conversational interactions. The goal is to enhance productivity and simplify day-to-day tasks for users.",
+  },
+  {
+    title: "AI-Powered Video Streaming Platform",
+    description: 
+      "Develop a video streaming platform that uses AI to personalize the user experience. Key features include a recommendation engine that analyzes user preferences, watch history, and behavior to suggest relevant content. The platform should support multiple user profiles with tailored recommendations for each, provide an AI-enhanced search functionality for mood- or genre-based queries, and continuously adapt to user behavior for improved suggestions. The focus is on delivering an engaging, customized entertainment experience.",
+  },
+  {
+    title: "Personalized Health Coach Bot: Fitness at Your Fingertips",
+    description: 
+      "Design an AI-powered health and fitness bot that acts as a personal coach. The bot should monitor fitness metrics like steps, calories, and sleep patterns, generate customized workout and dietary plans based on user goals, and offer real-time tips and motivational messages. Integration with wearable devices for seamless data collection is essential. This bot should empower users to maintain a healthier lifestyle with minimal effort.",
+  },
+  {
+    title: "Career Guidance Bot: Chart Your Future with AI",
+    description: 
+      "Develop a chatbot to assist individuals in planning their careers. The bot should analyze user skills, strengths, and interests to recommend suitable career paths. It should also suggest online courses, certifications, and other resources to enhance skills, provide insights into industry trends and job market demands, and offer guidance for creating and optimizing resumes. The aim is to make career planning more informed and effective.",
+  },
+  {
+    title: "Financial Advisor Bot: Your Personal Finance Manager",
+    description: 
+      "Build an AI-powered financial advisor bot that helps users manage their finances effectively. The bot should assist in creating and maintaining budgets, track expenses to identify spending patterns, and provide personalized investment strategies. It should also offer actionable financial tips for saving, reducing debt, and planning for the future. The goal is to make financial management simpler and improve users' financial literacy.",
+  },
+  {
+    title: "AI Chatbot for PDF Interaction",
+    description: 
+      "Create an intelligent chatbot that enables users to interact with PDF documents conversationally. The bot should extract key information, summarize lengthy documents, and provide precise answers to user questions based on the content. Additionally, it should handle multiple documents simultaneously, making it ideal for professionals, students, and researchers who need to retrieve data quickly and efficiently.",
+  },
+];
 
-        Information Extraction: Identify and extract key data points from the document.
-        Summarization: Provide concise summaries of lengthy PDFs.
-        QuestionAnswering: Allow users to ask questions and receive precise answers based on the document content.
-        MultiDocument Support: Handle multiple PDFs simultaneously for comparative queries.
-        This chatbot will make data retrieval intuitive and efficient, ideal for professionals, students, and researchers.
-      `,
-    },
-  ];
-export default hackathonIdeas  
+export default hackathonIdeas;
