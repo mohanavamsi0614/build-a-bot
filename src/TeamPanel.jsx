@@ -112,7 +112,6 @@ function Clock() {
       const currentTime = currentDate.getTime();
       
       const updatedEvents = events.map((event) => {
-        const eventTimeString = `${event.date} ${event.time}`;
         const eventDate = new Date(`${event.date} ${event.time}`); 
 
         if (currentDate.getDate() === parseInt(event.date) && currentTime >= eventDate.getTime() && !event.isDone) {

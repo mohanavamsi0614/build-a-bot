@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import api from "./api";
 import PaymentCard from "./PaymentCard";
 import Attd from "./Atten";
+import ScoreCard from "./ScoreCard";
+import Hunt from "./hunt";
 
 function Admin() {
   const [data, setData] = useState([]);
@@ -10,6 +12,8 @@ function Admin() {
   const [error, setError] = useState(null);
   const [count, setCount] = useState(0);
   const [mode, setMode] = useState("attd");
+  const [auth,setAuth]=useState(sessionStorage.getItem("Auth"))
+  const [pass,setpass]=useState("")
   const [currentZone, setCurrentZone] = useState("A");
 
   const zones = ["A", "B", "C", "D", "E", "F"];
@@ -48,6 +52,28 @@ function Admin() {
     );
   }
 
+  if(! auth){
+    return (
+      <div className=" bg-gray-700 w-full flex-col h-screen flex justify-center items-center">
+       <p className="text-3xl font-bold text-center text-white">
+                    <span className="text-[#E16254]">Coding Blocks Kare</span> Presents
+                </p>
+                <h1 className="text-5xl mt-2 text-white">Build a Bot</h1>
+                <p className="text-xl m-2 text-white">A 24-Hours Hackathon</p>
+        <div className=" bg-white rounded-md p-4 flex flex-col justify-center items-center"> 
+       
+        <h1 className=" font-semibold text-xl">Enter the password</h1>
+          <input placeholder=" Enter the Password"  className=" border p-2 border-black h-8 rounded-lg" onChange={(e)=>{setpass(e.target.value)}}/>
+          <button className=" w-20 p-2 mt-2  text-white rounded bg-[#E16254]" onClick={()=>{
+            if(pass=="itkare2024"){
+              sessionStorage.setItem("Auth",true)
+              setAuth(true)
+            }
+          }}>Submit</button>
+        </div>
+      </div>
+    )
+  }
   const startIndex = zones.indexOf(currentZone) * itemsPerZone;
   const endIndex = startIndex + itemsPerZone;
   const currentZoneData = data.slice(startIndex, endIndex);
@@ -73,7 +99,15 @@ function Admin() {
           } text-white font-semibold py-2 px-6 rounded-full transition`}
         >
           Project ID
+        </button>  <button
+          onClick={() => setMode("Hunt")}
+          className={`${
+            mode === "Hunt" ? "bg-blue-600" : "bg-gray-700 hover:bg-gray-600"
+          } text-white font-semibold py-2 px-6 rounded-full transition`}
+        >
+          Hunt 🤖
         </button>
+        
       </div>
 
       {/* Zone Navigation Buttons */}
@@ -111,9 +145,9 @@ function Admin() {
                 <div className="mt-2">
                   {mode === "attd" ? (
                     <Attd team={team} />
-                  ) : (
-                    <PaymentCard team={team} />
-                  )}
+                  ) : mode === "Hunt" ? (
+                    <Hunt team={team} />
+                  ) : <PaymentCard team={team}/>}
                 </div>
               </details>
             ))}
