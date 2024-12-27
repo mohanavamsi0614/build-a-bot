@@ -7,13 +7,13 @@ function PaymentCard({ team }) {
   const [full, setFull] = useState(false);
   const [loading, setLoading] = useState(false);
   const [verified, setVerified] = useState(team.verified);
+  const [projectId, setProjectId] = useState("");
+  const [finalprojectId,setfinalprojectId]=useState("")
 
   async function handleVerify(id) {
-    const passcode=prompt("Enter the password:")
-        if(passcode=="cbkare2024"){
     try {
       setLoading(true);
-      const response = await axios.get(`${api}/event/team/${id}`);
+      const response = await axios.get(`${api}/event/team/${id}`,);
       console.log(response.data);
       setVerified(true);
     } catch (err) {
@@ -21,9 +21,26 @@ function PaymentCard({ team }) {
       alert("Failed to verify the team.");
     } finally {
       setLoading(false);
-    }}
-    else{
-        alert("Wrong password")
+    }
+  }
+
+  async function handleProjectIdSubmit(id) {
+    if (!projectId) {
+      alert("Please enter a Project ID before submitting.");
+      return;
+    }
+
+    try {
+      setLoading(true);
+      const response = await axios.post(`${api}/event/pro/${id}`, { projectId });
+      console.log("Project ID submitted:", response.data);
+      setfinalprojectId(projectId)
+      alert("Project ID submitted successfully.");
+    } catch (err) {
+      console.error("Error submitting Project ID:", err);
+      alert("Failed to submit Project ID.");
+    } finally {
+      setLoading(false);
     }
   }
 
@@ -33,15 +50,11 @@ function PaymentCard({ team }) {
         <h2 className="text-2xl font-semibold text-gray-800 mb-4">
           {team.teamName || "Team Name"}
         </h2>
-        <p className="text-gray-500 mb-2">UPI ID: {team.upiId || "N/A"}</p>
-        <p className="text-gray-500 mb-4">
-          Transaction ID: {team.transtationId || "N/A"}
-        </p>
-
+        
         {full && (
           <div className="mb-4">
-          <h3 className=" font-bold text-black">Team Lead:</h3>
-          <p className=" text-gray-700">{team.lead.name}</p>
+            <h3 className=" font-bold text-black">Team Lead:</h3>
+            <p className=" text-gray-700">{team.lead.name}</p>
             <h3 className="text-lg font-semibold text-gray-700 mb-2">
               Team Members:
             </h3>
@@ -53,14 +66,11 @@ function PaymentCard({ team }) {
           </div>
         )}
 
-        <div className="mt-4 flex items-center space-x-4">
+        {/* <div className="mt-4 flex items-center space-x-4">
           <button
             onClick={() => handleVerify(team._id)}
-            disabled={verified || loading}
             className={`px-4 py-2 rounded font-semibold text-white flex items-center space-x-2 ${
-              verified || loading
-                ? "bg-gray-500 cursor-not-allowed"
-                : "bg-[#E16254] hover:bg-[#E16256] transition duration-300"
+              "bg-[#E16254] hover:bg-[#E16256] transition duration-300"
             }`}
           >
             {loading ? (
@@ -95,8 +105,26 @@ function PaymentCard({ team }) {
           {verified && (
             <span className="text-green-500 font-bold"> ✅ Verified</span>
           )}
-        </div>
+        </div> */}
 
+        {!team?.ProblemID && !finalprojectId ? 
+          <div className="mt-4">
+        <input
+            type="text"
+            placeholder="Enter Project ID"
+            value={projectId}
+            onChange={(e) => setProjectId(e.target.value)}
+            className="border text-black text-balc rounded px-3 py-2 w-full mb-4"
+          />
+          <button
+            onClick={() => handleProjectIdSubmit(team._id)}
+            className="px-4 py-2 rounded bg-blue-500 hover:bg-blue-600 text-white font-semibold transition duration-300"
+          >
+            Submit Project ID
+          </button>
+        </div> : <p className=" text-black text-3xl">Project ID:{team.ProblemID || finalprojectId}</p>
+          }
+          
         <button
           onClick={() => setFull(!full)}
           className="mt-4 text-blue-500 hover:underline transition duration-200"

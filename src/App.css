@@ -15,6 +15,17 @@
   width: 100%;
   background-image: url("../public/vecteezy_digital-blue-background-with-dots-and-lines-big-data_26234742.gif") ;
  }
+ .bg{
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* Keeps the background fixed */
+    background-position: center;
+    background-image: url("../public/vecteezy_digital-blue-background-with-dots-and-lines-big-data_26234742.gif") ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+ }
  /* body{ */
  
     /* background-position:0%;
