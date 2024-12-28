@@ -47,7 +47,7 @@ function ScoreCard({ team }) {
     };
     setLoading(true);
     axios
-      .post(`${api}/event/team/score/${team._id}`, formData)
+      .get(`${api}/event/team/score/${team._id}`, formData)
       .then((res) => {
         console.log(res.data);
         setIsSubmitted(true);
