@@ -15,11 +15,11 @@ function Score() {
 
   const zones = {
     A: [0, 12],
-    B: [13, 21],
-    C: [22, 37],
-    D: [38, 51],
-    E: [52, 61],
-    F: [62, 70],
+    B: [12, 21],
+    C: [21, 37],
+    D: [37, 51],
+    E: [51, 61],
+    F: [61, 70],
   };
 
   useEffect(() => {
@@ -63,6 +63,7 @@ function Score() {
 
   const getZoneData = () => {
     const [start, end] = zones[zone];
+    console.log(start,end,zone)
     return data.slice(start, end);
   };
 
