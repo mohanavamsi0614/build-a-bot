@@ -284,6 +284,7 @@ function Clock() {
                                                 <th className="border border-gray-300 px-4 py-2">1st Attd</th>
                                                 <th className="border border-gray-300 px-4 py-2">2nd Attd</th>
                                                 <th className="border border-gray-300 px-4 py-2">3rd Attd</th>
+                                                <th className="border border-gray-300 px-4 py-2">4th Attd</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -292,6 +293,7 @@ function Clock() {
                                                 <td className={`border border-gray-300 px-4 py-2 text-center ${attendanceClass(team.lead?.FirstAttd)}`}>{team.lead?.FirstAttd}</td>
                                                 <td className={`border border-gray-300 px-4 py-2 text-center ${attendanceClass(team.lead?.SecondAttd)}`}>{team.lead?.SecondAttd}</td>
                                                 <td className={`border border-gray-300 px-4 py-2 text-center ${attendanceClass(team.lead?.ThirdAttd)}`}>{ team.lead?.ThirdAttd}</td>
+                                                <td className={`border border-gray-300 px-4 py-2 text-center ${attendanceClass(team.lead?.FourthAttd)}`}>{ team.lead?.FourthAttd}</td>
                                             </tr>
                                             {team.members.map((member) => (
                                                 <tr key={member.id}>
@@ -299,6 +301,7 @@ function Clock() {
                                                     <td className={`border border-gray-300 px-4 py-2 text-center ${attendanceClass(member?.FirstAttd)}`}>{member?.FirstAttd}</td>
                                                     <td className={`border border-gray-300 px-4 py-2 text-center ${attendanceClass(member?.SecondAttd)}`}>{member.SecondAttd}</td>
                                                     <td className={`border border-gray-300 px-4 py-2 text-center ${attendanceClass(member?.ThirdAttd)}`}>{member.ThirdAttd}</td>
+                                                    <td className={`border border-gray-300 px-4 py-2 text-center ${attendanceClass(member?.FourthAttd)}`}>{member.FourthAttd}</td>
                                                 </tr>
                                             ))}
                                         </tbody>

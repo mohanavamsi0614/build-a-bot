@@ -34,6 +34,9 @@ function AllScore() {
               {team.teamName}
             </h2>
             <p className="text-gray-600 text-lg">Score: {team.Score}</p>
+            <p className="text-gray-600 text-lg">SecoundReviewScore: {team.SecoundReviewScore}</p>
+            {/* <p className="text-gray-600 text-lg">ThirdReviewScore: {team?.ThirdReviewScore}</p> */}
+            
           </div>
         ))}
       </div>

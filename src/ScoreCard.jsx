@@ -7,20 +7,22 @@ const socket = io(api);
 
 function ScoreCard({ team }) {
   const [scores, setScores] = useState({
-    "Understanding the PS": 0,
-    "Approach and Planning": 0,
-    "Out-of-the-Box Thinking": 0,
-    "Team Collaboration": 0,
+    "Progress and Milestones": 0,
+    " Code Quality and Readability": 0,
+    " Originality and No Plagiarism": 0,
+    " Feedback Integration": 0,
+" TeamDynamicsandProblem-Solving":0
   });
   const [total, setTotal] = useState(0);
   const [submitted, setIsSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
 
   const maxScores = {
-    "Understanding the PS": 30,
-    "Approach and Planning": 30,
-    "Out-of-the-Box Thinking": 20,
-    "Team Collaboration": 20,
+    "Progress and Milestones": 30,
+    " Code Quality and Readability": 25,
+    " Originality and No Plagiarism": 20,
+    " Feedback Integration":15,
+" TeamDynamicsandProblem-Solving":10
   };
 
   useEffect(() => {
@@ -41,8 +43,8 @@ function ScoreCard({ team }) {
 
   const send = () => {
     const formData = {
-      FirstReview: scores,
-      Score: total,
+      SecoundReview: scores,
+      SecoundReviewScore: total,
     };
     setLoading(true);
     axios
@@ -66,7 +68,7 @@ function ScoreCard({ team }) {
               {i} : {scores[i]}
             </p>
           ))}
-          <p>Total Score: {team.Score || total}</p>
+          <p>Total Score: {team.SecoundReviewScore || total}</p>
         </div>
         <p>Done!</p>
       </div>
@@ -108,10 +110,11 @@ function ScoreCard({ team }) {
         className="border rounded p-3 bg-gray-600 text-white"
         onClick={() =>
           setScores({
-            "Understanding the PS": 0,
-            "Approach and Planning": 0,
-            "Out-of-the-Box Thinking": 0,
-            "Team Collaboration": 0,
+            "Progress and Milestones": 0,
+    " Code Quality and Readability": 0,
+    " Originality and No Plagiarism": 0,
+    " Feedback Integration": 0,
+" TeamDynamicsandProblem-Solving":0
           })
         }
       >
