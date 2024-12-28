@@ -8,6 +8,7 @@ import Admin from './Admin'
 import TeamPanel from './TeamPanel'
 import AllTeamsAttendance from './OA'
 import Score from './Score'
+import AllScore from './AllScore'
 function App() {
 
   return (
@@ -21,7 +22,7 @@ function App() {
         <Route path='/teampanel' element={<TeamPanel/>}/>
         <Route path='/at' element={<AllTeamsAttendance/>}/>
         <Route path='/Score' element={<Score/>}/>
-
+        <Route path='/allscore' element={<AllScore/>}/>
       </Routes>
     </div>
   )
