@@ -30,7 +30,7 @@ function ScoreCard({ team }) {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    const numericValue = Math.min(Math.max(Number(value), 0), maxScores[name] || 0); // Clamp values between 0 and max
+    const numericValue = Math.min(Math.max(Number(value), 0), maxScores[name] || 0);
     if (!isNaN(numericValue)) {
       setScores((prev) => ({
         ...prev,
@@ -41,13 +41,12 @@ function ScoreCard({ team }) {
 
   const send = () => {
     const formData = {
-      teamName: team.teamName,
       FirstReview: scores,
       Score: total,
     };
     setLoading(true);
     axios
-      .get(`${api}/event/team/score/${team._id}`, formData)
+      .post(`${api}/event/team/score/${team._id}`, {team:{...formData}})
       .then((res) => {
         console.log(res.data);
         setIsSubmitted(true);
