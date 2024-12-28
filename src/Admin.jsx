@@ -90,7 +90,7 @@ function Admin() {
             mode === "attd" ? "bg-blue-600" : "bg-gray-700 hover:bg-gray-600"
           } text-white font-semibold py-2 px-6 rounded-full transition`}
         >
-          Attendance
+          Secound Attendance
         </button>
         <button
           onClick={() => setMode("pro")}

@@ -12,6 +12,7 @@ function Attd({ team }) {
       members: team.members.map(member => ({ ...member, SecondAttd: "" }))
     };
   });
+  const [submited,setsubmit]=useState(false)
 
   const handleAttendance = (type, role, name) => {
     setAttendance(prev => {
@@ -33,6 +34,7 @@ function Attd({ team }) {
     if (attendance.lead.SecondAttd && allDone) {
       e.currentTarget.disabled = true;
       e.currentTarget.style.backgroundColor="grey";
+      setsubmit(true)
       socket.emit("admin", attendance)
     } else {
       alert("Please mark attendance for all members and the lead.");
@@ -95,7 +97,7 @@ function Attd({ team }) {
             sub(e)}}
         className={`w-full mt-4 py-3 ${team.lead?.SecondAttd ? " bg-gray-700" : "bg-[#E16256]"}  text-white font-bold rounded-md  transition-colors`}
       >
-        {team.lead?.SecondAttd ? "Submited" : "Submit"}
+        {submited || team.lead?.SecondAttd ? "Submited" : "Submit"}
       </button>
     </div>
   );
