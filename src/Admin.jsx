@@ -63,7 +63,7 @@ function Admin() {
         <div className=" bg-white rounded-md p-4 flex flex-col justify-center items-center"> 
        
         <h1 className=" font-semibold text-xl">Enter the password</h1>
-          <input placeholder=" Enter the Password"  className=" border p-2 border-black h-8 rounded-lg" onChange={(e)=>{setpass(e.target.value)}}/>
+          <input placeholder=" Enter the Password" type="password"  className=" border p-2 border-black h-8 rounded-lg" onChange={(e)=>{setpass(e.target.value)}}/>
           <button className=" w-20 p-2 mt-2  text-white rounded bg-[#E16254]" onClick={()=>{
             if(pass=="itkare2024"){
               sessionStorage.setItem("Auth",true)
