@@ -8,8 +8,8 @@ function Attd({ team }) {
   const [attendance, setAttendance] = useState(() => {
     return {
         name:team.teamName,
-      lead: { ...team.lead, ThirdAttd: "" },
-      members: team.members.map(member => ({ ...member, ThirdAttd: "" }))
+      lead: { ...team.lead, FourthAttd: "" },
+      members: team.members.map(member => ({ ...member, FourthAttd: "" }))
     };
   });
   const [submited,setsubmit]=useState(false)
@@ -17,12 +17,12 @@ function Attd({ team }) {
   const handleAttendance = (type, role, name) => {
     setAttendance(prev => {
       if (role === "lead") {
-        return { ...prev, lead: { ...prev.lead, ThirdAttd: type } };
+        return { ...prev, lead: { ...prev.lead, FourthAttd: type } };
       } else {
         return {
           ...prev,
           members: prev.members.map(member =>
-            member.name === name ? { ...member, ThirdAttd: type } : member
+            member.name === name ? { ...member, FourthAttd: type } : member
           )
         };
       }
@@ -30,8 +30,8 @@ function Attd({ team }) {
   };
 
   const sub = (e) => {
-    const allDone = attendance.members.every(i => i.ThirdAttd === "P" || i.ThirdAttd === "A");
-    if (attendance.lead.ThirdAttd && allDone) {
+    const allDone = attendance.members.every(i => i.FourthAttd === "P" || i.FourthAttd === "A");
+    if (attendance.lead.FourthAttd && allDone) {
       e.currentTarget.disabled = true;
       e.currentTarget.style.backgroundColor="grey";
       setsubmit(true)
@@ -50,7 +50,7 @@ function Attd({ team }) {
           <button
             onClick={() => handleAttendance("P", "lead")}
             className={`px-4 py-2 rounded-md ${
-              attendance.lead.ThirdAttd === "P"  ? "bg-green-500 text-white" : "bg-gray-200"
+              attendance.lead.FourthAttd === "P"  ? "bg-green-500 text-white" : "bg-gray-200"
             }`}
           >
             Present
@@ -58,7 +58,7 @@ function Attd({ team }) {
           <button
             onClick={() => handleAttendance("A", "lead")}
             className={`px-4 py-2 rounded-md ${
-              attendance.lead.ThirdAttd === "A"  ? "bg-red-500 text-white" : "bg-gray-200"
+              attendance.lead.FourthAttd === "A"  ? "bg-red-500 text-white" : "bg-gray-200"
             }`}
           >
             Absent
@@ -73,7 +73,7 @@ function Attd({ team }) {
             <button
               onClick={() => handleAttendance("P", "member", member.name)}
               className={`px-4 py-2 rounded-md ${
-                member.ThirdAttd === "P" ? "bg-green-500 text-white" : "bg-gray-200"
+                member.FourthAttd === "P" ? "bg-green-500 text-white" : "bg-gray-200"
               }`}
             >
               Present
@@ -81,7 +81,7 @@ function Attd({ team }) {
             <button
               onClick={() => handleAttendance("A", "member", member.name)}
               className={`px-4 py-2 rounded-md ${
-                member.ThirdAttd === "A" ? "bg-red-500 text-white" : "bg-gray-200"
+                member.FourthAttd === "A" ? "bg-red-500 text-white" : "bg-gray-200"
               }`}
             >
               Absent
@@ -91,13 +91,13 @@ function Attd({ team }) {
       ))}
 
       <button
-      disabled={team.lead?.ThirdAttd}
+      disabled={team.lead?.FourthAttd}
         onClick={(e)=>{
         
             sub(e)}}
-        className={`w-full mt-4 py-3 ${team.lead?.ThirdAttd ? " bg-gray-700" : "bg-[#E16256]"}  text-white font-bold rounded-md  transition-colors`}
+        className={`w-full mt-4 py-3 ${team.lead?.FourthAttd ? " bg-gray-700" : "bg-[#E16256]"}  text-white font-bold rounded-md  transition-colors`}
       >
-        {submited || team.lead?.ThirdAttd ? "Submited" : "Submit"}
+        {submited || team.lead?.FourthAttd ? "Submited" : "Submit"}
       </button>
     </div>
   );

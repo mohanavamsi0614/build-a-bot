@@ -99,17 +99,17 @@ function Score() {
               {zones[zone][0] + index + 1}. {team.teamName}
             </summary>
             <div className="mt-2">
-              {!team?.SecoundReview ? (
+              {!team?.ThirdReview ? (
                 <ScoreCard key={team._id} team={team} />
               ) : (
                 <div>
                   <div>
-                    {Object.keys(team.SecoundReview).map((i) => (
+                    {Object.keys(team.ThirdReview).map((i) => (
                       <p key={i}>
-                        {i} : {team.SecoundReview[i]}
+                        {i} : {team.ThirdReview[i]}
                       </p>
                     ))}
-                    <p>Total Score: {team.SecoundReviewScore}</p>
+                    <p>Total Score: {team.ThirdReviewScore}</p>
                   </div>
                   <p>Done!</p>
                 </div>

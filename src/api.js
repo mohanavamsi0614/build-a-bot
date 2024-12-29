@@ -1,2 +1,2 @@
-const api="https://cb-kare-server-l2zi.onrender.com"
+const api="https://cb-kare-server-za6b.onrender.com"
 export default api

@@ -100,9 +100,11 @@ function TeamPanel() {
     const [error, setError] = useState("");
     const [leaderboard, setLeaderboard] = useState([]);
     const [ProblemID,setProblemID]=useState()
-
+    const [feedback,setfeedback]=useState("")
           
+    function sendfeedback(){
 
+    }
 function Clock() {
   const [time, setTime] = useState(new Date().toLocaleTimeString());
 
@@ -348,6 +350,10 @@ function Clock() {
                                     ))}
                                 </div>
                             </div>
+                        </div>
+                        <div className=" mt-3">
+                        <input placeholder="Your FeedBack Matters!" className=" p-2  rounded bg-gray-600" onChange={(e)=>{setfeedback(e.target.value)}} />
+                        <button onClick={sendfeedback} className=" p-2 ml-2 bg-[#E16255] rounded">Submit</button>
                         </div>
                         {/* <div>
                             <h2 className="text-3xl text-center font-bold mb-4">Resources</h2>

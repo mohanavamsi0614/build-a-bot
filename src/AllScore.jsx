@@ -30,13 +30,14 @@ function AllScore() {
           >
  <h2 className="text-xl font-semibold text-gray-700">
               {index+1}
-            </h2>          <h2 className="text-xl font-semibold text-gray-700">
+            </h2>          
+            <h2 className="text-xl font-semibold text-gray-700">
               {team.teamName}
             </h2>
             <p className="text-gray-600 text-lg">Score: {team.Score}</p>
             <p className="text-gray-600 text-lg">SecoundReviewScore: {team.SecoundReviewScore}</p>
-            {/* <p className="text-gray-600 text-lg">ThirdReviewScore: {team?.ThirdReviewScore}</p> */}
-            
+            <p className="text-gray-600 text-lg">ThirdReviewScore: {team?.ThirdReviewScore}</p>
+            <p className="text-black text-lg font-bold">Final Score: {team?.FinalScore}</p>
           </div>
         ))}
       </div>

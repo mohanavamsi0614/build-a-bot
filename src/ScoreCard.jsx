@@ -7,22 +7,22 @@ const socket = io(api);
 
 function ScoreCard({ team }) {
   const [scores, setScores] = useState({
-    "Progress and Milestones": 0,
-    " Code Quality and Readability": 0,
-    " Originality and No Plagiarism": 0,
-    " Feedback Integration": 0,
-" TeamDynamicsandProblem-Solving":0
+    "Completion and Functionality": 0,
+    "Application Design and Structure": 0,
+    "Code Quality and Documentation": 0,
+    "Innovativeness and Problem-Solution Fit ": 0,
+"Feedback Implementation and Refinement":0
   });
   const [total, setTotal] = useState(0);
   const [submitted, setIsSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
 
   const maxScores = {
-    "Progress and Milestones": 30,
-    " Code Quality and Readability": 25,
-    " Originality and No Plagiarism": 20,
-    " Feedback Integration":15,
-" TeamDynamicsandProblem-Solving":10
+    "Completion and Functionality": 30,
+    "Application Design and Structure": 25,
+    "Code Quality and Documentation": 20,
+    "Innovativeness and Problem-Solution Fit ":15,
+"Feedback Implementation and Refinement":10
   };
 
   useEffect(() => {
@@ -43,8 +43,9 @@ function ScoreCard({ team }) {
 
   const send = () => {
     const formData = {
-      SecoundReview: scores,
-      SecoundReviewScore: total,
+      ThirdReview: scores,
+      ThirdReviewScore: total,
+      FinalScore:Number(team.Score)+Number(team.SecoundReviewScore)+total
     };
     setLoading(true);
     axios
@@ -68,7 +69,7 @@ function ScoreCard({ team }) {
               {i} : {scores[i]}
             </p>
           ))}
-          <p>Total Score: {team.SecoundReviewScore || total}</p>
+          <p>Total Score: {team.FinalScore || total}</p>
         </div>
         <p>Done!</p>
       </div>
@@ -110,11 +111,11 @@ function ScoreCard({ team }) {
         className="border rounded p-3 bg-gray-600 text-white"
         onClick={() =>
           setScores({
-            "Progress and Milestones": 0,
-    " Code Quality and Readability": 0,
-    " Originality and No Plagiarism": 0,
-    " Feedback Integration": 0,
-" TeamDynamicsandProblem-Solving":0
+            "Completion and Functionality": 0,
+    "Application Design and Structure": 0,
+    "Code Quality and Documentation": 0,
+    "Innovativeness and Problem-Solution Fit ": 0,
+"Feedback Implementation and Refinement":0
           })
         }
       >
