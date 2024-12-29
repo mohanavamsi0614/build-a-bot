@@ -9,6 +9,7 @@ import TeamPanel from './TeamPanel'
 import AllTeamsAttendance from './OA'
 import Score from './Score'
 import AllScore from './AllScore'
+import High from './HighScore'
 function App() {
 
   return (
@@ -23,6 +24,7 @@ function App() {
         <Route path='/at' element={<AllTeamsAttendance/>}/>
         <Route path='/Score' element={<Score/>}/>
         <Route path='/allscore' element={<AllScore/>}/>
+        <Route path='/high' element={<High/>}/>
       </Routes>
     </div>
   )

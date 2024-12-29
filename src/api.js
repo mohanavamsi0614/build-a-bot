@@ -1,2 +1,2 @@
-const api="https://cb-kare-server-mlkg.onrender.com"
+const api="http://localhost:3000"
 export default api

@@ -103,7 +103,11 @@ function TeamPanel() {
     const [feedback,setfeedback]=useState("")
           
     function sendfeedback(){
-
+        axios.post(`${api}/event/feedback/${team._id}`,{feedback}).then((res)=>{
+            console.log('done')
+            alert("done thanks for attending 😄")
+            sendfeedback("")
+        })
     }
 function Clock() {
   const [time, setTime] = useState(new Date().toLocaleTimeString());
